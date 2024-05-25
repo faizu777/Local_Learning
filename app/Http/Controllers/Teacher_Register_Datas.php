@@ -59,30 +59,46 @@ class Teacher_Register_Datas extends Controller
         ]);
 
         $number = '+91' . $req['Contact_number'];
-        if ($this->sendOTP($number)) {
-            $teacher_image = $req['Adhaar_image'];
-            $teacher_signature = $req['Degree_image'];
+        /*$this->sendOTP($number)*/
+        if (true) {
+            // $teacher_image = $req['Adhaar_image'];
+            // $teacher_signature = $req['Degree_image'];
 
-            $teacher_image_base64 = base64_encode(file_get_contents($teacher_image->getRealPath()));
-            $teacher_signature_base64 = base64_encode(file_get_contents($teacher_signature->getRealPath()));
+            // $teacher_image_base64 = base64_encode(file_get_contents($teacher_image->getRealPath()));
+            // $teacher_signature_base64 = base64_encode(file_get_contents($teacher_signature->getRealPath()));
 
-            $req = collect($req)
-                ->merge([
-                    'Adhaar_image' => $teacher_image_base64,
-                    'Degree_image' => $teacher_signature_base64,
-                ])
-                ->all();
-            session()->put('teacher_data', $req);
+            // $req = collect($req)
+            //     ->merge([
+            //         'Adhaar_image' => $teacher_image_base64,
+            //         'Degree_image' => $teacher_signature_base64,
+            //     ])
+            //     ->all();
+            // session()->put('teacher_data', $req);
+            $this->Temp_Data_Save($req,true);
         } else {
             session()->flush();
         }
     }
 
+    function Temp_Data_Save($temp,$bool)
+    {
+        $temp_data;
+        if($bool)
+        {
+$temp_data = $temp;
+Log::debug($temp_data);
+        }
+else{
+    Log::debug($temp_data);
+}
+
+    }
     function TeacherData_Save()
     {
         $otpdata = request()->validate(['digit1' => 'required', 'digit2' => 'required', 'digit3' => 'required', 'digit4' => 'required']);
 
         $otpdata = implode('', $otpdata);
+        $this->Temp_Data_Save($otpdata,false);
         if (session()->has('otp')) {
             if ($otpdata == session()->get('otp')) {
                 $req = $this->data;
