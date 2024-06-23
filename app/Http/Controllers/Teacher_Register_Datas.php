@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+
 class Teacher_Register_Datas extends Controller
 {
     protected $data;
@@ -22,27 +24,27 @@ class Teacher_Register_Datas extends Controller
         session()->put('otp', $otp);
         try {
             $twilio = new Client($sid, $token);
-
             $message = $twilio->messages->create(
                 $number, // to
                 [
-                    'body' => 'Your verification code is' . ' ' . $otp,
+                    'body' => 'Your verification code is ' . $otp,
                     'from' => $phone_number,
-                ],
+                ]
             );
             return true;
         } catch (Exception $e) {
             return false;
         }
     }
-    function RegisterTeacherData()
+
+    public function RegisterTeacherData(Request $request)
     {
-        $req = request()->validate([
+        $req = $request->validate([
             'name' => 'required',
             'Dob' => 'required',
-            'Contact_number' => 'required |min:10|max:10',
-            'WhatsApp_number' => 'required |min:10|max:10',
-            'Adhaar_number' => 'required |min:12|max:12',
+            'Contact_number' => 'required|min:10|max:10',
+            'WhatsApp_number' => 'required|min:10|max:10',
+            'Adhaar_number' => 'required|min:12|max:12',
             'presentaddress' => 'required',
             'permanentaddress' => 'required',
             'tuitionname' => 'required',
@@ -54,110 +56,81 @@ class Teacher_Register_Datas extends Controller
             'board' => 'required',
             'gender' => 'required',
             'password' => 'required',
-            'Adhaar_image' => 'required',
-            'Degree_image' => 'required',
+            'Adhaar_image' => 'required|image',
+            'Degree_image' => 'required|image',
         ]);
 
         $number = '+91' . $req['Contact_number'];
-        /*$this->sendOTP($number)*/
-        if (true) {
-            // $teacher_image = $req['Adhaar_image'];
-            // $teacher_signature = $req['Degree_image'];
 
-            // $teacher_image_base64 = base64_encode(file_get_contents($teacher_image->getRealPath()));
-            // $teacher_signature_base64 = base64_encode(file_get_contents($teacher_signature->getRealPath()));
+        if ($this->sendOTP($number)) {
+            // Temporarily store form data in session excluding files
+            session()->put('form_data', $request->except(['Adhaar_image', 'Degree_image']));
+            // Store files temporarily
+            $adhaarImagePath = $request->file('Adhaar_image')->store('temp');
+            $degreeImagePath = $request->file('Degree_image')->store('temp');
+            session()->put('adhaar_image_path', $adhaarImagePath);
+            session()->put('degree_image_path', $degreeImagePath);
 
-            // $req = collect($req)
-            //     ->merge([
-            //         'Adhaar_image' => $teacher_image_base64,
-            //         'Degree_image' => $teacher_signature_base64,
-            //     ])
-            //     ->all();
-            // session()->put('teacher_data', $req);
-            $this->Temp_Data_Save($req,true);
+            return response()->json(['success' => 'OTP Sent Successfully'], 200);
         } else {
             session()->flush();
+            return response()->json(['error' => 'Failed to send OTP'], 500);
         }
     }
 
-    function Temp_Data_Save($temp,$bool)
+    public function TeacherData_Save(Request $request)
     {
-        $temp_data;
-        if($bool)
-        {
-$temp_data = $temp;
-Log::debug($temp_data);
-        }
-else{
-    Log::debug($temp_data);
-}
-
-    }
-    function TeacherData_Save()
-    {
-        $otpdata = request()->validate(['digit1' => 'required', 'digit2' => 'required', 'digit3' => 'required', 'digit4' => 'required']);
+        $otpdata = $request->validate([
+            'digit1' => 'required',
+            'digit2' => 'required',
+            'digit3' => 'required',
+            'digit4' => 'required'
+        ]);
 
         $otpdata = implode('', $otpdata);
-        $this->Temp_Data_Save($otpdata,false);
-        if (session()->has('otp')) {
-            if ($otpdata == session()->get('otp')) {
-                $req = $this->data;
-                Log::debug($req);
-                if (is_null($req) || empty($req)) {
-                    $this->query("set session wait_timeout=300");
-                    $teacher_data = session()->get('teacher_data');
 
-                    if ($teacher_data['Adhaar_image']) {
-                        $image_base64 = $teacher_data['Adhaar_image'];
+        if (session()->has('otp') && $otpdata == session()->get('otp')) {
+            // Retrieve and save the form data
+            $form_data = session()->get('form_data');
+            $adhaar_image_path = session()->get('adhaar_image_path');
+            $degree_image_path = session()->get('degree_image_path');
 
-                        $image_data = base64_decode($image_base64);
-                        $Adhaar_Image_Name = time() . '.' . pathinfo($image_data, PATHINFO_EXTENSION);
-                        $image_data->move(public_path('storage/Adhaar_Image'), $Adhaar_Image_Name);
-                    }
+            $data = new Teacher_Register_Data();
+            $data->name = $form_data['name'];
+            $data->Dob = $form_data['Dob'];
+            $data->phone_number = $form_data['Contact_number'];
+            $data->whatsapp_number = $form_data['WhatsApp_number'];
+            $data->adhaar_number = $form_data['Adhaar_number'];
+            $data->present_address = $form_data['presentaddress'];
+            $data->permanent_address = $form_data['permanentaddress'];
+            $data->tuition_name = $form_data['tuitionname'];
+            $data->teaching_experience = $form_data['teachingexp'];
+            $data->expected_monthly_tuition_fee = $form_data['fee'];
+            $data->qualification = $form_data['qualification'];
+            $data->major_subject = $form_data['major'];
+            $data->subject_can_teach = $form_data['subject'];
+            $data->board_name = $form_data['board'];
+            $data->gender = $form_data['gender'];
+            $data->password = $form_data['password'];
 
-                    if ($teacher_data['Degree_image']) {
-                        $signature_base64 = $teacher_data['Degree_image'];
-                        $signature_data = base64_decode($signature_base64);
+            // Move files from temp to permanent storage
+            $adhaarImageName = basename($adhaar_image_path);
+            $degreeImageName = basename($degree_image_path);
+            Storage::move($adhaar_image_path, 'public/adhaar_images/' . $adhaarImageName);
+            Storage::move($degree_image_path, 'public/degree_images/' . $degreeImageName);
 
+            $data->Adhaar_image = 'public/adhaar_images/' . $adhaarImageName;
+            $data->Degree_image = 'public/degree_images/' . $degreeImageName;
+            $data->status = 'not approved';
+            $data->save();
 
+            // Clear session data
+            session()->forget(['otp', 'form_data', 'adhaar_image_path', 'degree_image_path']);
 
-
-                        $Degree_Image_Name = time() . '.' . pathinfo($signature_data, PATHINFO_EXTENSION);
-                        $signature_data->move(public_path('storage/Degree_Image'), $Degree_Image_Name);
-                    }
-
-                    $data = new Teacher_Register_Data();
-                    $data->name = $teacher_data['name'];
-                    $data->Dob = $teacher_data['Dob'];
-                    $data->phone_number = $teacher_data['Contact_number'];
-                    $data->whatsapp_number = $teacher_data['WhatsApp_number'];
-                    $data->adhaar_number = $teacher_data['Adhaar_number'];
-                    $data->present_address = $teacher_data['presentaddress'];
-                    $data->permanent_address = $teacher_data['permanentaddress'];
-                    $data->tuition_name = $teacher_data['tuitionname'];
-                    $data->teaching_experience = $teacher_data['teachingexp'];
-                    $data->expected_monthly_tuition_fee = $teacher_data['fee'];
-                    $data->qualification = $teacher_data['qualification'];
-                    $data->major_subject = $teacher_data['major'];
-                    $data->subject_can_teach = $teacher_data['subject'];
-                    $data->board_name = $teacher_data['board'];
-                    $data->gender = $teacher_data['gender'];
-                    $data->password = $teacher_data['password'];
-                    $data->Adhaar_image = $Adhaar_Image_Name;
-                    $data->Degree_image = $Degree_Image_Name;
-                    $data->status = 'not approved';
-                    $data->save();
-
-
-                    return response()->json(['success' => 'Teacher Data Saved'], 200);
-                } else {
-                    return response()->json(['error' => 'Teacher Data empty'], 400);
-                }
-            } else {
-                return response()->json(['error' => 'Otp is not correct']);
-            }
+            return response()->json(['success' => 'Teacher Data Saved'], 200);
         } else {
-            return response()->json(['error' => 'Otp is not correct']);
+            return response()->json(['error' => 'OTP is not correct'], 400);
         }
     }
 }
+

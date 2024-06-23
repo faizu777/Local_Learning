@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Local Learningvvvv </title>
+    <title>eLEARNING </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content=" Learning Platform " name="keywords">
     <meta content="" name="description">
@@ -45,29 +45,7 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><img src="/img/favicon.ico" alt="..."
-                    class="img-thumbnail sm "></i>Local Learning</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/" class="nav-item nav-link">Home</a>
-                <a href="/about" class="nav-item nav-link active">About</a>
-                <a href="/courses" class="nav-item nav-link">Courses</a>
-
-                <a href="/contact" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="{{ route('course') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"> <i
-                    class="fa fa-arrow-left ms-1 "></i> &nbsp;Join Teacher
-            </a>
-            <a href="{{ route('course') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Student <i
-                    class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
+   @include('navbar')
     <!-- Navbar End -->
 
 
@@ -149,7 +127,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to Local Learning</h1>
+                    <h1 class="mb-4">Welcome to eLEARNING</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam
                         et eos. Clita erat ipsum et lorem et sit.</p>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam
@@ -386,5 +364,21 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+<script>
+    $(document).ready(function()
+    {
 
+     // Select the "About" link
+var aboutLink = document.querySelector('.navbar-nav .nav-link[href="/about"]');
+
+// Add the 'active' class to the "About" link
+if (aboutLink) {
+    aboutLink.classList.add('active');
+}
+
+      console.log('ready');
+
+
+    });
+  </script>
 </html>

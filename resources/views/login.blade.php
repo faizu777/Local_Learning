@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     @csrf
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="UserEmail" name="email">
+                                        placeholder="UserEmail" name="email" value="{{old('email')}}">
 
                                 </div>
                                 <div class="form-group">

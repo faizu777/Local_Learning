@@ -43,26 +43,7 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Local Learning</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/" class="nav-item nav-link">Home</a>
-                <a href="/about" class="nav-item nav-link">About</a>
-                <a href="/courses" class="nav-item nav-link">Courses</a>
-               
-                <a href="/contact" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="{{ route('course') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"> <i class="fa fa-arrow-left ms-1 "></i> &nbsp;Join Teacher
-            </a>
-         <a href="{{ route('course') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Student <i
-                 class="fa fa-arrow-right ms-3"></i></a>
-    </nav>
+   @include('navbar')
     <!-- Navbar End -->
 
 
@@ -91,7 +72,7 @@
         <div class="container text-center">
             <h1>Privacy Policy</h1>
             <p>Your privacy is important to us. It is our policy to respect your privacy regarding any information we may collect from you across our website, [yourwebsite.com], and other sites we own and operate.</p>
-    
+
             <h2>Information We Collect</h2>
             <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
             <p>For example, we may collect:</p>
@@ -100,7 +81,7 @@
                 <li>Payment information for processing transactions</li>
                 <li>Usage data such as pages visited and time spent on the platform for analytics</li>
             </ul>
-    
+
             <h2>How We Use Information</h2>
             <p>We use the information we collect in various ways, including to:</p>
             <ul>
@@ -111,20 +92,20 @@
                 <li>Process your transactions</li>
                 <li>Find and prevent fraud</li>
             </ul>
-    
+
             <h2>Security</h2>
             <p>We are committed to ensuring the security of your personal information. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, disclosure, alteration, and destruction.</p>
-    
+
             <h2>Changes to This Privacy Policy</h2>
             <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
             <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-    
+
             <h2>Contact Us</h2>
             <p>If you have any questions or concerns about our Privacy Policy, please contact us at [contact@example.com].</p>
         </div>
     </div>
     <!-- privacy End -->
-        
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -189,9 +170,9 @@
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
 
-                       
+
                         Designed By <a class="border-bottom" href="#">Faizan khan </a><br><br>
-                       
+
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

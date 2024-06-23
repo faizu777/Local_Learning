@@ -34,25 +34,7 @@
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="{{ route('index') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Local Learning</h2>
-    </a>
-    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="/" class="nav-item nav-link">Home</a>
-            <a href="/about" class="nav-item nav-link">About</a>
-            <a href="/courses" class="nav-item nav-link">Courses</a>
-
-            <a href="/contact" class="nav-item nav-link">Contact</a>
-        </div>
-        <a href="{{ route('course') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login Now<i
-                class="fa fa-arrow-right ms-3"></i></a>
-    </div>
-</nav>
+@include('navbar')
 <!-- Navbar End -->
 
  <main>
@@ -152,7 +134,7 @@
   </article>
  </main>
 
-  <footer class="credit">Author: Hyser - Distributed By: <a title="Awesome web design code & scripts" href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
+  
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
