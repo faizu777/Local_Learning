@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\course;
+use App\Http\Controllers\page;
 use App\Http\Controllers\admin;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Middleware\AuthUser;
@@ -10,25 +10,31 @@ use App\Http\Controllers\Teacher_Register_Datas;
 use App\Http\Controllers\Student_Register_Controller;
 use App\Http\Controllers\Mailsending;
 use App\Http\Controllers\Otp_verify;
-Route::get('/privacy',[course::class,'privacy'])->name('privacy');
-Route::get('/', [course::class, 'index'])->name('index');
-Route::get('/courses',[admin::class,'courses'])->name('course');
-Route::get('/about',[course::class,'about']);
-Route::get('/contact',[course::class,'contact'])->name('contact');
-Route::get('/RegisterTeacher',[course::class,'Teacher_Register_Page'])->name('RegisterTeacher');
-Route::get('/RegisterStudent',[course::class,'Student_Register_Page'])->name('RegisterStudent');
+use App\Http\Controllers\Register_Teacher_Con;
+use App\Http\Controllers\User_login;
+Route::get('/privacy',[page::class,'privacy'])->name('privacy');
+Route::get('/', [page::class, 'index'])->name('index');
+Route::get('/pages',[admin::class,'pages'])->name('course');
+Route::get('/about',[page::class,'about']);
+Route::get('/contact',[page::class,'contact'])->name('contact');
+Route::get('/RegisterTeacher',[page::class,'Teacher_Register_Page'])->name('RegisterTeacher');
+Route::get('/RegisterStudent',[page::class,'Student_Register_Page'])->name('RegisterStudent');
+Route::get('/login-user',[page::class,'login_user'])->name('login-user-page');
 Route::post('/Addteacher',[admin::class,'Add_Teacher']);
-Route::post('/AddCourse',[admin::class,'Add_Course']);
+Route::get('/profile',[page::class,'profile'])->name('profile');
+
+Route::post('/Addpage',[admin::class,'Add_page']);
 Route::get('/admin',[admin::class,'Admin'])->name('admin')->middleware('auth');
 
 Route::get('/Deleteteacher/{id}',[admin::class,'Delete_Teacher'])->name('deleteteacher');
-Route::get('/Deletecourse/{id}',[admin::class,'Delete_Course'])->name('deletecourse');
+Route::get('/Deletepage/{id}',[admin::class,'Delete_page'])->name('deletepage');
 Route::get('/Login',[LoginuserController::class,'loginpage'])->name('loginpage');
 Route::get('/Register',[LoginuserController::class,'RegisterPage'])->name('RegisterPage');
 Route::post('/UserLogin',[LoginuserController::class,'login'])->name('login');
 Route::post('/UserRegister',[LoginuserController::class,'Register'])->name('Register');
 Route::get('/UserLogout',[LoginuserController::class,'logout'])->name('logout');
-Route::post('/RegisterTeacherData',[Teacher_Register_Datas::class,'RegisterTeacherData'])->name('RegisterTeacherData');
+Route::post('/RegisterTeacherData',[Register_Teacher_Con::class,'RegisterTeacherData'])->name('RegisterTeacherData');
 Route::any('Register_Student_Data',[Student_Register_Controller::class,'Student_Register_Detail'])->name('Student_Register_Detail');
 Route::post('/SendMail',[Mailsending::class,'sendMail'])->name('sendMail');
 Route::post('/verifyOTP',[Teacher_Register_Datas::class,'TeacherData_Save'])->name('verifyOTP');
+Route::post('login-user',[User_login::class,'login_user'])->name('login-user');

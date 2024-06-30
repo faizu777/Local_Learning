@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher_Register_Data;
+use App\Models\Student_Register;
 
 
-
-class course extends Controller
+class page extends Controller
 {
     function index()
     {
@@ -35,7 +36,16 @@ class course extends Controller
     }
     function Teacher_Register_Page()
     {
-return view('RegisterTeacher');
+return view('Register-Teacher');
+    }
+    function login_user()
+    {
+        return view('user-login');
+    }
+    function profile()
+    {
+
+        return view('user-teacher');
     }
 
 }

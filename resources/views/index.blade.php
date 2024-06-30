@@ -64,10 +64,10 @@
                                 <p class="fs-5 text-white mb-4 pb-2">Learning flourishes under the guidance of a coach
                                     who inspires, challenges, and empowers, creating a path illuminated by knowledge and
                                     growth.</p>
-                                <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Join
-                                    Teacher </a>
+                                <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Find
+                                    Tuition </a>
                                 <a href="{{ route('RegisterStudent') }}"
-                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Student</a>
+                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Find Tuitor</a>
                             </div>
                         </div>
 
@@ -86,10 +86,10 @@
                                     our offline classes."</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">The best coaching seamlessly integrates online and
                                     offline realms, fostering holistic learning experiences.</p>
-                                <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Join Teacher
-                                    </a>
+                                <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Find
+                                    Tuition </a>
                                 <a href="{{ route('RegisterStudent') }}"
-                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Student</a>
+                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Find Tuitor</a>
                             </div>
                         </div>
                     </div>
