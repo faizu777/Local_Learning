@@ -25,6 +25,9 @@ Route::get('/profile',[page::class,'profile'])->name('profile');
 
 Route::post('/Addpage',[admin::class,'Add_page']);
 Route::get('/admin',[admin::class,'Admin'])->name('admin')->middleware('auth');
+Route::get('/changestatus/{id}',[admin::class,'Change_Status'])->name('changestatus');
+Route::get('/teacherdetail/{id}',[admin::class,'teacherdetail'])->name('teacherdetail');
+
 
 Route::get('/Deleteteacher/{id}',[admin::class,'Delete_Teacher'])->name('deleteteacher');
 Route::get('/Deletepage/{id}',[admin::class,'Delete_page'])->name('deletepage');
@@ -36,5 +39,6 @@ Route::get('/UserLogout',[LoginuserController::class,'logout'])->name('logout');
 Route::post('/RegisterTeacherData',[Register_Teacher_Con::class,'RegisterTeacherData'])->name('RegisterTeacherData');
 Route::any('Register_Student_Data',[Student_Register_Controller::class,'Student_Register_Detail'])->name('Student_Register_Detail');
 Route::post('/SendMail',[Mailsending::class,'sendMail'])->name('sendMail');
-Route::post('/verifyOTP',[Teacher_Register_Datas::class,'TeacherData_Save'])->name('verifyOTP');
+// Route::post('/verifyOTP',[Teacher_Register_Datas::class,'TeacherData_Save'])->name('verifyOTP');
+Route::post('/update_teacher',[Register_Teacher_Con::class,'update_teacher'])->name('update_teacher');
 Route::post('login-user',[User_login::class,'login_user'])->name('login-user');

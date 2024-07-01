@@ -689,6 +689,16 @@ select.form-control:not([size]):not([multiple]) {
 body{
     background-color: #f4f4f4;
 }
+label{
+  display: inline-block;
+  background-color:#04bec4;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
 </style>
 
 
@@ -755,11 +765,11 @@ body{
                   <!-- END profile-header-content -->
                   <!-- BEGIN profile-header-tab -->
                   <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts" target="__blank" class="nav-link_">POSTS</a></li>
-                     <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">ABOUT</a></li>
-                     <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" class="nav-link_">PHOTOS</a></li>
-                     <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" class="nav-link_">VIDEOS</a></li>
-                     <li class="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list" target="__blank" class="nav-link_ active show">FRIENDS</a></li>
+                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">POSTS</a></li>
+                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">ABOUT</a></li>
+                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">PHOTOS</a></li>
+                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">VIDEOS</a></li>
+                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_ active show">FRIENDS</a></li>
                   </ul>
                   <!-- END profile-header-tab -->
                </div>
@@ -939,23 +949,214 @@ body{
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              ...
+            <div class="modal-body-lg">
+                <br>
+                <div class="container">
+                    <form  id="update-teacher-form" enctype="multipart/form-data">
+                      <input type="hidden" name="Teacher_id" value="{{$teacher->Teacher_id}}">
+                        <div class="row">
+                          <div class="col-md-4 mb-4">
+
+
+                                <input type="text" class="form-control form-control-lg" placeholder="Teacher Name"
+                                name="name" style="border-radius: 10px;" value="{{$teacher->name}}">
+
+
+
+                          </div>
+                          <div class="col-md-4 mb-4">
+
+                            <input placeholder="Email" type="email" class="form-control form-control-lg"
+                                name="email" id="exampleFormControlImail" style="border-radius: 10px;" value="{{$teacher->email}}">
+
+
+                          </div>
+                          <div class="col-md-4 mb-4">
+
+
+                            <input data-placeholder="DOB" type="date" class="form-control form-control-lg"
+                            name="Dob" id="exampleFormControlInput1" style="border-radius: 10px;" value="{{$teacher->Dob}}">
+
+
+
+                      </div>
+                        </div>
+                    <div class="row">
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="fee" name="fee" style="border-radius: 10px;" value="{{$teacher->expected_monthly_tuition_fee}}">
+                        </div>
+
+                          <div class="col-md-4 mb-4">
+                            <input type="number" class="form-control form-control-lg" placeholder="WhatsApp Number"
+                            name="WhatsApp_number" style="border-radius: 10px;" value="{{$teacher->whatsapp_number}}">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <input type="number" class="form-control form-control-lg" placeholder="Adhaar Number"
+                            name="Adhaar_number" style="border-radius: 10px;" value="{{$teacher->adhaar_number}}">
+                        </div>
+</div>
+<div class="row">
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="Present Address"
+                            name="presentaddress" style="border-radius: 10px;" value="{{$teacher->present_address}}">
+
+                          </div>
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg"
+                            placeholder="Permanent Address" name="permanentaddress" style="border-radius: 10px;" value="{{$teacher->permanent_address}}">
+
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="Tuition Name"
+                                name="tuitionname" style="border-radius: 10px;" value="{{$teacher->tuition_name}}">
+                        </div>
+</div>
+<div class="row">
+    @csrf
+
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg"
+                                placeholder="Teaching Experience" name="teachingexp" style="border-radius: 10px;" value="{{$teacher->teaching_experience}}">
+                          </div>
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="Qualification"
+                            name="qualification" style="border-radius: 10px;" value="{{$teacher->qualification}}">
+
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="Major Subect"
+                            name="major" style="border-radius: 10px;" value="{{$teacher->major_subject}}">
+                        </div>
+</div>
+<div class="row">
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg"
+                            placeholder="Subject/class which you can teach" name="subject" style="border-radius: 10px;" value="{{$teacher->subject_can_teach}}">
+
+                          </div>
+                          <div class="col-md-4 mb-4">
+
+                            <input type="text" class="form-control form-control-lg" placeholder="Board Name"
+                                name="board" style="border-radius: 10px;" value="{{$teacher->board_name}}">
+                          </div>
+                          <div class="col-md-4 mb-4">
+                            <select name="gender" class="form-select" style="border-radius: 10px;"id="gender">
+                                <option value="male" style="border-radius: 10px;">Male</option>
+                                <option value="female" style="border-radius: 10px;">Female</option>
+                            </select>
+                        </div>
+</div>
+<div class="row">
+                          <div class="col-md-4 mb-4">
+                            <input type="text" class="form-control form-control-lg" placeholder="phone number"
+                                name="Contact_number" style="border-radius: 10px;" value="{{$teacher->phone_number}}">
+                          </div>
+</div>
+                  {{-- <div class="row" style="margin-right:19px;">
+                          <div class="col-md-3 mb-3">
+                            <input type="file" id="upload"  name="profile_pic" accept="image/*" hidden/>
+                            <label for="upload">Update Profile </label>
+                          </div>
+                          <div class="col-md-3 mb-3" style="margin-right:5px;">
+                            <div class="input-group">
+                                <input type="file" id="upload"  name="Adhaar_image" accept="image/*" hidden/>
+                                <label for="upload">Update Adhaar </label>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <input type="file" id="upload" hidden  accept="image/*" name="Degree_image"/>
+                            <label for="upload">Update Degree </label>
+                          </div>
+</div> --}}
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <input type="file" id="upload_profile_pic" hidden name="profile_pic" accept="image/*"/>
+        <label for="upload_profile_pic">Update Profile </label>
+    </div>
+    <div class="col-md-3 mb-3" style="margin-right:5px;">
+        <input type="file" id="upload_adhaar_image" hidden name="Adhaar_image" accept="image/*"/>
+        <label for="upload_adhaar_image">Update Adhaar </label>
+    </div>
+    <div class="col-md-3 mb-3">
+        <input type="file" id="upload_degree_image" hidden name="Degree_image" accept="image/*"/>
+        <label for="upload_degree_image">Update Degree </label>
+    </div>
+</div>
+
+</div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
+        </form>
           </div>
         </div>
       </div>
+      <script>
+$('document').ready(function(){
+    $('#gender').val("{{$teacher->gender}}");
+    toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-center",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "1000",
+                "hideDuration": "2000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "show",
+                "hideMethod": "hide"
+            };
+            $('#update-teacher-form').submit(function (e) {
+                e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{{route('update_teacher')}}',
+                data: $('#update-teacher-form').serialize(),
+                success: function (data) {
+                    toastr.success(data.success);
+                },
+                error: function (error) {
+                        console.log(error);
+                        $('#alert-success').hide();
+                        var Showerror = document.getElementById("error-message");
+                        Showerror.style.display = "block";
+                        Showerror.innerHTML = '';
+
+                        var errors = error.responseJSON.errors;
+
+
+                        }
+                        });
+            });
+        });
+
+
+      </script>
+      @if (session()->has('success'))
+        <script>
+              toastr.success('{{ session('success') }}');
+            </script>
+        @endif
+        @if (session()->has('error'))
+            <script>
+                toastr.error('{{ session('error') }}');
+</script>
+@endif
     <!-- Ajax Form Script -->
     {{-- <script type="text/javascript">
         $(document).ready(function () {

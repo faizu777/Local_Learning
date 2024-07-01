@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>Admin Pannel </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/src/assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="/src/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -555,7 +555,7 @@
                                     <!--Add Teacher-->
                                     <div class="container-scroller">
                                         <div class="container-fluid page-body-wrapper full-page-wrapper">
-                                            <div class="content-wrapper d-flex align-items-center auth px-0">
+                                            {{-- <div class="content-wrapper d-flex align-items-center auth px-0">
                                                 <div class="row w-100 mx-0">
                                                     <div class="col-lg-8 mx-auto">
 
@@ -676,7 +676,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- content-wrapper ends -->
                                         </div>
                                         <!-- page-body-wrapper ends -->
@@ -691,7 +691,7 @@
 
                                     <div class="container-scroller">
                                         <div class="container-fluid page-body-wrapper full-page-wrapper">
-                                            <div class="content-wrapper d-flex align-items-center auth px-0">
+                                            {{-- <div class="content-wrapper d-flex align-items-center auth px-0">
                                                 <div class="row w-100 mx-0">
                                                     <div class="col-lg-8 mx-auto">
                                                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
@@ -838,7 +838,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- content-wrapper ends -->
                                         </div>
                                         <!-- page-body-wrapper ends -->
@@ -853,10 +853,10 @@
                                         <div class="col-lg-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h4 class="card-title">Course Table</h4>
+                                                    <h4 class="card-title"></h4>
                                                     <p class="card-description">
-                                                    <h5>No of Courses</h5>
-                                                    <h4> {{ $No_Course }}</h4>
+                                                    <h5>No of Students</h5>
+                                                    <h4> {{ $No_student }}</h4>
                                                     </p>
                                                     <br>
                                                     <div class="container float-right">
@@ -877,22 +877,22 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>
-                                                                        Course ID
+                                                                        Student Name
                                                                     </th>
                                                                     <th>
-                                                                        Course Name
+                                                                        Class
                                                                     </th>
                                                                     <th>
-                                                                        Course Price
+                                                                        Subject
                                                                     </th>
                                                                     <th>
-                                                                        Teacher ID
+                                                                        Board
                                                                     </th>
                                                                     <th>
-                                                                        Course Time
+                                                                        Fee
                                                                     </th>
                                                                     <th>
-                                                                        Course Duration
+                                                                        Duration
                                                                     </th>
                                                                     <th>
                                                                         Delete
@@ -900,18 +900,19 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($courses as $Course)
+                                                                @foreach ($students as $student)
                                                                     <tr>
-                                                                        <td> {{ $Course->C_id }} </td>
-                                                                        <td> {{ $Course->Course_name }} </td>
-                                                                        <td> {{ $Course->Course_Price }} </td>
-                                                                        <td> {{ $Course->Teacher_id }} </td>
-                                                                        <td> {{ $Course->Course_Time }} </td>
-                                                                        <td> {{ $Course->Course_Duration }} </td>
+                                                                        <td> {{ $student->Name}} </td>
+                                                                        <td> {{ $student->Class }} </td>
+                                                                        <td> {{ $student->Subject }} </td>
+                                                                        <td> {{ $student->Board }} </td>
+                                                                        <td> {{ $student->fee }} </td>
+                                                                        <td> {{ $student->duration }} </td>
                                                                         <td> <a
-                                                                                href="{{ route('deletecourse', $Course->C_id) }}"><button
+                                                                                href="#"><button
                                                                                     class="btn btn-danger ">
-                                                                                    Delete</button></a></td>
+                                                                                    <i class="mdi mdi-delete"></i></button></a></td>
+
 
                                                                     </tr>
                                                                 @endforeach
@@ -1012,12 +1013,16 @@
                                                                                         class="input-helper"></i></label>
                                                                             </div>
                                                                         </th>
-                                                                        <th>Teacher id</th>
-                                                                        <th>Teacher Name</th>
-                                                                        <th>Teacher Address</th>
-                                                                        <th>Teacher_ID_NO</th>
-                                                                        <th>Teacher Course </th>
-                                                                        <th>Teacher Salary </th>
+                                                                        <th>S No</th>
+                                                                        <th> Name</th>
+                                                                        <th> Email</th>
+                                                                        <th> Contact Number</th>
+                                                                        <th> Adhaar Number</th>
+                                                                        <th> Address</th>
+                                                                        <th>Qualification</th>
+                                                                        <th> Board</th>
+                                                                        <th>Gender</th>
+                                                                        <th>View More</th>
                                                                         <th>Status</th>
                                                                         <th>Delete </th>
                                                                     </tr>
@@ -1036,41 +1041,59 @@
                                                                                 </div>
                                                                             </td>
                                                                             <td>
-                                                                                <h6> {{ $teacher->Tid }} </h6>
+                                                                                <h6> {{ $teacher->id }} </h6>
                                                                             </td>
                                                                             <td>
                                                                                 <h6> {{ $teacher->name }} </h6>
                                                                             </td>
                                                                             <td>
-                                                                                <h6> {{ $teacher->Dob }}
-                                                                                </h6>
+                                                                                <h6>{{ $teacher->email}}</h6>
                                                                             </td>
+
+
                                                                             <td>
-                                                                                <h6>{{ $teacher->phone_number}}</h6>
-                                                                            </td>
-                                                                            <td>
-                                                                                <h6>{{ $teacher->whatsapp_number }}
+                                                                                <h6>{{ $teacher->phone_number}}
                                                                                 </h6>
                                                                             </td>
                                                                             <td>
                                                                                 <h6>{{ $teacher->adhaar_number }}</h6>
                                                                             </td>
+                                                                            <td>
+                                                                                <h6>{{ $teacher->permanent_address }}</h6>
+                                                                            </td>
+                                                                            <td>
+                                                                                <h6>{{ $teacher->qualification }}</h6>
+                                                                            </td>
+                                                                            <td>
+                                                                                <h6>{{ $teacher->board_name }}</h6>
+                                                                            </td>
+                                                                            <td>
+                                                                                <h6>{{$teacher->gender}}</h6>
+                                                                            </td>
+                                                                            <td>
+                                                                                <a href="{{ route('teacherdetail', $teacher->Teacher_id) }}"><button>
+view more</button></a>
+
+                                                                            </td>
+
                                                                             @if ($teacher->status == "not approved")
                                                                                 <td>
-                                                                                    <h6 class="text text-success">
-                                                                                        {{ $teacher->status }}
-                                                                                    </h6>
+
+                                                                                    <a href="{{url('changestatus').'/'.$teacher->Teacher_id }}"> <h6 class="text text-danger"> {{ $teacher->status }} </h6> </a>
                                                                                 </td>
                                                                             @else
                                                                                 <td>
-                                                                                    <h6 class="text text-danger">
-                                                                                        {{ $teacher->status}}
-                                                                                    </h6>
+
+                                                                                        <a href="{{url('changestatus').'/'.$teacher->Teacher_id }}">  <h6 class="text text-success">{{ $teacher->status }}   </h6></a>
+
+
+
+
                                                                                 </td>
                                                                             @endif
 
                                                                             <td><a
-                                                                                    href="{{ route('deleteteacher', $teacher->Tid) }}"><button
+                                                                                    href="{{ route('deleteteacher', $teacher->Teacher_id) }}"><button
                                                                                         class="btn btn-danger ">
                                                                                         Delete</button></a></td>
                                                                         </tr>

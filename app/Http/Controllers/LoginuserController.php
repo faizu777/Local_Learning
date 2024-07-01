@@ -9,11 +9,11 @@ class LoginuserController extends Controller
 {
     function loginpage()
     {
-        return view('login');
+        return view('AdminView.login');
     }
     function RegisterPage()
     {
-        return view('Register');
+        return view('AdminView.Register');
     }
     public function login(Request $Logindetails)
     {

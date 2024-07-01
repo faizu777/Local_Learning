@@ -287,10 +287,7 @@
                             <input placeholder="Email" type="email" class="form-control form-control-lg"
                                 name="email" id="exampleFormControlImail" style="border-radius: 10px;">
                         </div>
-                        <div class="form-group">
 
-                            <input type="text" class="form-control form-control-lg" placeholder="fee" name="fee" style="border-radius: 10px;">
-                        </div>
                         <div class="form-group">
 
                             <input type="file" class="form-control form-control-lg"
