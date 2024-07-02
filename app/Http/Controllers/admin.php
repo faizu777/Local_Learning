@@ -29,7 +29,7 @@ class admin extends Controller
     }
     function Delete_Teacher($id)
     {
-        $Teacher = teacher::find($id)->delete();
+        $Teacher = Teacher_Register_Data::where('Teacher_id',$id)->delete();
         return back()->with('deleteteacher', 'Teacher deleted successfully');
     }
     function Delete_Course($id)
@@ -174,5 +174,5 @@ class admin extends Controller
         $Teacher->save();
         return back()->with('changestatus', 'Status changed successfully');
     }
-    
+
 }

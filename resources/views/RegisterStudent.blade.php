@@ -147,7 +147,7 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    {{-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Local Learning</h2>
         </a>
@@ -164,7 +164,8 @@
             </div>
             <a href="{{ route('login-user-page') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login Now<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
-    </nav>
+    </nav> --}}
+    @include('navbar')
     <!-- Navbar End -->
 
 

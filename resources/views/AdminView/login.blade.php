@@ -21,6 +21,9 @@
     <!-- endinject -->
     <link rel="shortcut icon"href="/src/assets/images/favicon.png" />
 </head>
+<style>
+
+</style>
 
 <body>
     <div class="container-scroller">

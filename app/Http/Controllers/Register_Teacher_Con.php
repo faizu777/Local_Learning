@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Student_Register;
 
 class Register_Teacher_Con extends Controller
 {
@@ -82,7 +83,7 @@ return response()->json(['success' => 'Teacher Data Saved']);
 }
 public function update_teacher(Request $request)
 {
-
+return response()->json(['success' => $request->all()]);
     $req = $request->validate([
         'name' => 'required',
         'Dob' => 'required',
@@ -101,11 +102,9 @@ public function update_teacher(Request $request)
         'gender' => 'required',
         'email' => 'required|email',
         'Teacher_id' => 'required',
-        'profile_pic' => 'required|image|mimes:jpeg,png,jpg,gif',
-        'Adhaar_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'Degree_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+
     ]);
-    return response()->json(['success' => $request->all()]);
+
     $Teacher = Teacher_Register_Data::where('Teacher_id', $req['Teacher_id'])->first();
 
     if (!$Teacher) {
@@ -145,8 +144,32 @@ public function update_teacher(Request $request)
 
     return response()->json(['success' => 'Profile updated successfully']);
 }
+public function update_profile(Request $request)
+{
+    if(session()->has('user'))
+    {
+        $Teacher = Teacher_Register_Data::where('Teacher_id', session()->get('user'))->first();
+        if ($request->hasFile('img')) {
+            $imageName = time() . '.' . $request->file('img')->getClientOriginalExtension();
+            $request->file('img')->move(public_path('Teacher_images/'), $imageName);
+            $Teacher->profile_img = 'Teacher_images/' . $imageName;
+            $Teacher->save();
+            return back()->with('success', 'Profile updated successfully');
+        }
+    }
+    return redirect('/login-user');
 
 
+}
+public function Teacher_Detail($id)
+{
+    $student = Student_Register::get();
+
+
+    $teacher = Teacher_Register_Data::where('Teacher_id', $id)->first();
+    return view('user-teacher',compact('teacher','student'));
+
+}
 
 
 

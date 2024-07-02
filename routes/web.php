@@ -41,4 +41,7 @@ Route::any('Register_Student_Data',[Student_Register_Controller::class,'Student_
 Route::post('/SendMail',[Mailsending::class,'sendMail'])->name('sendMail');
 // Route::post('/verifyOTP',[Teacher_Register_Datas::class,'TeacherData_Save'])->name('verifyOTP');
 Route::post('/update_teacher',[Register_Teacher_Con::class,'update_teacher'])->name('update_teacher');
+Route::post('/update-profile',[Register_Teacher_Con::class,'update_profile'])->name('update-profile');
+Route::get('/teacher/{id}',[Register_Teacher_Con::class,'Teacher_Detail'])->name('Teacher_Detail');
 Route::post('login-user',[User_login::class,'login_user'])->name('login-user');
+

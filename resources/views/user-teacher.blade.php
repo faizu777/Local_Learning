@@ -699,6 +699,21 @@ label{
   cursor: pointer;
   margin-top: 1rem;
 }
+.input--file {
+  position: relative;
+  color: #7f7f7f;
+  top: 125px;
+  left: 100px;
+  z-index: 9999;
+}
+
+.input--file input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
 </style>
 
 
@@ -732,8 +747,21 @@ label{
                   <!-- BEGIN profile-header-content -->
                   <div class="profile-header-content">
                      <!-- BEGIN profile-header-img -->
+                     <div class="input--file">
+                        <form action="/update-profile" method="post" enctype="multipart/form-data" id="update-profile-form">
+                        <span>@csrf
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3.2"/>
+                            <path d="M9 2l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2h-3.17l-1.83-2h-6zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                            <path d="M0 0h24v24h-24z" fill="none"/>
+                          </svg>
+                        </span>
+                        <input name="img" type="file" />
+                    </form>
+                      </div>
                      <div class="profile-header-img">
                         <img src="{{ asset($teacher->profile_img) }}" alt="" class="profile-img" style="object-fit: cover;">
+
                     </div>
 
                      <!-- END profile-header-img -->
@@ -1075,7 +1103,7 @@ label{
                             <label for="upload">Update Degree </label>
                           </div>
 </div> --}}
-<div class="row">
+{{-- <div class="row">
 
     <div class="col-md-3 mb-3">
         <input type="file" id="upload_profile_pic" hidden name="profile_pic" accept="image/*"/>
@@ -1089,7 +1117,7 @@ label{
         <input type="file" id="upload_degree_image" hidden name="Degree_image" accept="image/*"/>
         <label for="upload_degree_image">Update Degree </label>
     </div>
-</div>
+</div> --}}
 
 </div>
             </div>
@@ -1104,6 +1132,13 @@ label{
       <script>
 $('document').ready(function(){
     $('#gender').val("{{$teacher->gender}}");
+
+    const form = document.querySelector('#update-profile-form');
+const fileInput = document.querySelector('input[type="file"]');
+
+fileInput.addEventListener('change', () => {
+  form.submit();
+});
     toastr.options = {
                 "closeButton": true,
                 "debug": false,

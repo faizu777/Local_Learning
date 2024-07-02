@@ -19,9 +19,8 @@ if($teacher)
 {
     if($teacher->password==$request->password)
     {
-$student = Student_Register::get();
-       return view('user-teacher',compact('teacher','student'));
-
+        session()->put('user',$teacher->Teacher_id);
+return redirect('/teacher/'.$teacher->Teacher_id);
 
     }
     return back()->with('error','Your  password is wrong');
