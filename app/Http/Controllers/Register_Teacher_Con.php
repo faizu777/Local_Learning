@@ -163,7 +163,7 @@ public function update_profile(Request $request)
 }
 public function Teacher_Detail($id)
 {
-    $student = Student_Register::get();
+    $student = Student_Register::limit(10)->orderBy('id','desc')->get();
 
 
     $teacher = Teacher_Register_Data::where('Teacher_id', $id)->first();

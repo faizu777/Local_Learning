@@ -53,7 +53,7 @@
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                <img class="img-fluid" src="{{asset('AI_IMAGES/img2.jpg')}}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -67,7 +67,7 @@
                                 <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Find
                                     Tuition </a>
                                 <a href="{{ route('RegisterStudent') }}"
-                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Find Tuitor</a>
+                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Find Tutor</a>
                             </div>
                         </div>
 
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <img class="img-fluid" src="{{asset('AI_IMAGES/img1.jpg')}}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -95,6 +95,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!-- Carousel End -->
@@ -104,12 +105,21 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                            <h5 class="mb-3">Home Tuition</h5>
+                            <p>we offer personalized home tuition services provided by our team of highly skilled instructors.</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
                             <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <p> Each instructor brings a wealth of knowledge, real-world experience, and a passion for teaching .</p>
                         </div>
                     </div>
                 </div>
@@ -118,25 +128,17 @@
                         <div class="p-4">
                             <i class="fa fa-3x fa-globe text-primary mb-4"></i>
                             <h5 class="mb-3">Online Classes</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <p>we offer a comprehensive range of online classes led by our team of highly skilled instructors.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                            <h5 class="mb-3">Home Projects</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
                             <h5 class="mb-3">Book Library</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <p>Book Library, your gateway to a world of knowledge, entertainment, and inspiration. </p>
                         </div>
                     </div>
                 </div>
@@ -152,12 +154,12 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{asset('extenalimges/childs.png')}}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Know More</h6>
                     <h1 class="mb-4">Welcome to Local Learning</h1>
                     <p class="mb-4">Welcome to ! Step into a world of knowledge, innovation, and growth. </p>
                     <p class="mb-4"> Let's embark on a journey of learning together.</p>
@@ -185,7 +187,7 @@
                                 Certificate</p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="{{ route('course') }}">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="/about">Read More</a>
                 </div>
             </div>
         </div>
@@ -198,51 +200,52 @@
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-                <h1 class="mb-5">Courses Categories</h1>
+                <h1 class="mb-5">Tutor Categories</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                                <img class="img-fluid" src="{{asset('extenalimges/maths.webp')}}" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                                     style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">Maths </h5>
+                                    <small class="text-primary">100+ Tutor</small></small>
                                 </div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                                <img class="img-fluid" src="{{asset('extenalimges/physics.jpg')}}" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                                     style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">Physics </h5>
+                                    <small class="text-primary">99+ Tutor</small>
                                 </div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                                <img class="img-fluid" src="{{asset('extenalimges/english.png')}}" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                                     style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">English </h5>
+                                    <small class="text-primary">100+ Tutor</small>
                                 </div>
                             </a>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{asset('extenalimges/computer-s.jpg')}}" alt=""
                             style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                             style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
-                            <small class="text-primary">49 Courses</small>
+                            <h5 class="m-0">Computer Science</h5>
+                            <small class="text-primary">49+ Tutor</small>
                         </div>
                     </a>
                 </div>
@@ -253,7 +256,7 @@
 
 
     <!-- Courses Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
@@ -361,7 +364,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Courses End -->
 
 

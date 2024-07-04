@@ -19,7 +19,7 @@ if($teacher)
 {
     if($teacher->password==$request->password)
     {
-        session()->put('user',$teacher->Teacher_id);
+        session()->put('user_id',$teacher->Teacher_id);
 return redirect('/teacher/'.$teacher->Teacher_id);
 
     }
@@ -35,5 +35,11 @@ if($student)
     return back()->with('error','Your  password is wrong');
 }
 return back()->with('error','Your ID and Password is wrong');
+    }
+
+    public function logout()
+    {
+        session()->forget('user_id');
+        return redirect('/');
     }
 }

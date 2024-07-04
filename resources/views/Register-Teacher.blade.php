@@ -138,7 +138,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    @media screen and (max-width: 767px)
+    {
+        #login{
+            margin-bottom : 10px;
 
+
+        }
+    }
+</style>
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
@@ -164,13 +173,18 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about" class="nav-item nav-link">About</a>
-                <a href="/courses" class="nav-item nav-link">Courses</a>
+
 
                 <a href="/contact" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="{{ route('login-user-page') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login Now<i
+                <a href="/faq" class="nav-item nav-link">Faq</a>
+<div class="btn btn-primary btn-lg d-flex align-items-center justify-content-center">
+                <a href="{{ route('login-user-page') }}" class="nav-item" style="color: white; height:100%; width:100%;margin-top:18px;" id="login">Login Now<i
                     class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+
         </div>
+
     </nav>
     <!-- Navbar End -->
 
@@ -289,8 +303,8 @@
                         </div>
 
                         <div class="form-group">
-
-                            <input type="file" class="form-control form-control-lg"
+                            <label for="exampleInputEmail1" style="display: block; float: left; ">&nbsp;&nbsp;Profile</label>
+                            <input type="file" class="form-control  bg-primary"
 
 
                             name="profile_pic" id="profile_pic" style="border-radius: 10px;">
@@ -375,6 +389,8 @@
         </article>
     </main>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Footer Start -->
     @include('footer')

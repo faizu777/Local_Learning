@@ -9,12 +9,13 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="/" class="nav-item nav-link">Home</a>
             <a href="/about" class="nav-item nav-link">About</a>
-            <a href="/courses" class="nav-item nav-link">Courses</a>
+
             <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/faq" class="nav-item nav-link">FAQ</a>
         </div>
         <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"> <i class="fa fa-arrow-left ms-1 "></i> &nbsp;Find Tuition
            </a>
-        <a href="{{ route('RegisterStudent') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Find Tuitor <i
+        <a href="{{ route('RegisterStudent') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Find Tutor <i
                 class="fa fa-arrow-right ms-3"></i></a>
                 <div id="google_translate_element"class="bg-primary d-flex justify-content-center align-items-center" style="height: 75px;">
 

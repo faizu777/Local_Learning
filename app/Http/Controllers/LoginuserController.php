@@ -26,7 +26,7 @@ class LoginuserController extends Controller
             return back()->with('error', 'Invalid Email or Password');
         } else {
             if ($User->password == $Logindetails['password']) {
-                session()->put('user', $User);
+                session()->put('admin', $User->admin_id);
 
                 return redirect('/admin');
             } else {
@@ -43,6 +43,7 @@ class LoginuserController extends Controller
         ]);
 
         $User = new loginuser();
+        $User->admin_id = 'Admin'.rand(100000,999999);
         $User->username = $Registerdetails['name'];
         $User->password = $Registerdetails['password'];
         $User->email = $Registerdetails['email'];
@@ -52,7 +53,7 @@ class LoginuserController extends Controller
 
     function logout()
     {
-        session()->forget('user');
+        session()->forget('admin');
         return redirect('/');
     }
 }

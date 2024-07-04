@@ -404,101 +404,7 @@
 
 
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin') }}">
-                        <i class="mdi mdi-grid-large menu-icon"></i>
-                        <span class="menu-title">Dashboard
-                    </a>
-                </li>
-                <li class="nav-item nav-category">UI Elements</li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                        aria-controls="ui-basic">
-                        <i class="menu-icon mdi mdi-floor-plan"></i>
-                        <span class="menu-title">UI Elements</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="ui-basic">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="/src/pages/ui-features/buttons.html">Buttons</a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="/src/pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                    href="/src/pages/ui-features/typography.html">Typography</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">Forms and Datas</li>
-                <li class="nav-item">
-
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
-                        aria-controls="charts">
-                        <i class="menu-icon mdi mdi-chart-line"></i>
-                        <span class="menu-title">Charts</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="charts">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="#">ChartJs</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false"
-                        aria-controls="tables">
-                        <i class="menu-icon mdi mdi-table"></i>
-                        <span class="menu-title">Tables</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="tables">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/src/pages/tables/basic-table.html">Basic
-                                    table</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false"
-                        aria-controls="icons">
-                        <i class="menu-icon mdi mdi-layers-outline"></i>
-                        <span class="menu-title">Icons</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="icons">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/src/pages/icons/mdi.html">Mdi icons</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">pages</li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
-                        aria-controls="auth">
-                        <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                        <span class="menu-title">User Pages</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('RegisterPage') }}"> Add User
-                                </a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">help</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="menu-icon mdi mdi-file-document"></i>
-                        <span class="menu-title">Documentation</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        @include('AdminView.sidebar')
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
@@ -510,29 +416,29 @@
                                     <li class="nav-item">
                                         <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab"
                                             href="#overview" role="tab" aria-controls="overview"
-                                            aria-selected="true">Teacher</a>
+                                            aria-selected="true"><div class="btn btn-primary" >Teacher</div></a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#aud"
-                                            role="tab" aria-selected="false">Courses </a>
+                                            role="tab" aria-selected="false"><div class="btn btn-primary" >Student</div> </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                            href="#demographics" role="tab" aria-selected="false">More</a>
+                                            href="#demographics" role="tab" aria-selected="false"><div class="btn btn-primary" >More</div></a>
                                     </li>
                                     <li class="nav-item">
 
-                                        <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab"
+                                        {{-- <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab"
                                             href="#addteacher" role="tab" aria-selected="false"><button
                                                 class="btn btn-success btn-lg text-white mb-0 me-0" type="button"><i
-                                                    class="mdi mdi-account-plus"></i>Add Teacher</button></a>
+                                                    class="mdi mdi-account-plus"></i>Add Teacher</button></a> --}}
                                     </li>
                                     <li class="nav-item">
 
-                                        <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab"
+                                        {{-- <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab"
                                             href="#addcourse" role="tab" aria-selected="false"><button
                                                 class="btn btn-success btn-lg text-white mb-0 me-0" type="button"><i
-                                                    class="mdi mdi-account-plus"></i>Add Course</button></a>
+                                                    class="mdi mdi-account-plus"></i>Add Course</button></a> --}}
                                     </li>
                                 </ul>
                                 <div>
@@ -696,145 +602,7 @@
                                                     <div class="col-lg-8 mx-auto">
                                                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
 
-                                                            <center>
-                                                                <h3 class="fw-bold">Add Course</h3>
-                                                                @if (session()->has('courseerror'))
-                                                                    <div class="alert alert-danger">
-                                                                        {{ session('courseerror') }}
-                                                                    </div>
-                                                                @endif
 
-
-                                                                @error('course')
-                                                                    <div class="alert alert-danger">
-                                                                        {{ $errors->first('course') }}</div>
-                                                                @enderror
-
-                                                                @if (session()->has('addcourse'))
-                                                                    <div class="alert alert-success">
-                                                                        {{ session('addcourse') }}
-
-                                                                    </div>
-                                                                @endif
-
-                                                            </center>
-                                                            <form class="pt-3" method="POST" action="/AddCourse"
-                                                                enctype="multipart/form-data">
-
-                                                                <div class="container">
-                                                                    <img class="card-img-top" id="uploadedImage"
-                                                                        src="#" alt="Upload Image">
-                                                                </div>
-                                                                <br>
-                                                                <div class="card-body">
-                                                                    <input type="file" id="uploadInput"
-                                                                        class="btn btn-success w-100" name="image">
-
-                                                                    @if (session()->has('imgrequired'))
-                                                                        <span
-                                                                            class=" text text-danger">{{ session('imgrequired') }}</span>
-                                                                    @endif
-                                                                    @if ($errors->has('msg'))
-                                                                        <span class="text text-danger">
-                                                                            {{ $errors->first('msg') }} </span>
-                                                                    @endif
-                                                                </div>
-                                                                <br>
-
-                                                                <div class="text from-group text-warning">Fill ID When
-                                                                    you Update Course</div>
-                                                                <div class="form-group ">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg rounded"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Course ID" name="cid">
-                                                                    @error('cid')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                @csrf
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg rounded"
-                                                                        id="exampleInputEmail1"
-                                                                        placeholder="Course name" name="cname"
-                                                                        required>
-                                                                    @error('cname')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg rounded"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder=" Course Price" name="cprice"
-                                                                        required>
-                                                                    @error('cprice')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select class="form-select" name="tid">
-                                                                        <option value="0"> Teacher ID </option>
-                                                                        @foreach ($teachers as $teacher)
-                                                                            <option
-                                                                                value="{{ $teacher->Teacher_id }}">
-                                                                                {{ $teacher->Teacher_id }}
-                                                                            </option>
-                                                                        @endforeach
-
-
-                                                                    </select>
-
-                                                                    @error('tid')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg rounded"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Course Time " name="ctime"
-                                                                        required>
-                                                                    @error('ctime')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg rounded"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder=" Course Duration "
-                                                                        name="cduration" required>
-                                                                    @error('cduration')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-
-
-                                                                <div class="mt-3">
-                                                                    <input type="submit" value="submit"
-                                                                        class="btn btn-block btn-primary btn-lg font-weight-medium " />
-                                                                    <input type="submit" value="Update"
-                                                                        class="btn btn-block btn-primary btn-lg font-weight-medium " />
-                                                                </div>
-
-
-
-                                                                <div
-                                                                    class="my-2 d-flex justify-content-between align-items-center">
-
-
-
-                                                                </div>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1071,8 +839,8 @@
                                                                                 <h6>{{$teacher->gender}}</h6>
                                                                             </td>
                                                                             <td>
-                                                                                <a href="{{ route('teacherdetail', $teacher->Teacher_id) }}"><button>
-view more</button></a>
+                                                                                <a href="{{ route('teacherdetail', $teacher->Teacher_id) }}"><div class="btn btn-primary">view more</div> </a>
+
 
                                                                             </td>
 

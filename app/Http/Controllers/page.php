@@ -40,12 +40,28 @@ return view('Register-Teacher');
     }
     function login_user()
     {
+        if (session()->has('user_id'))
+         {
+            return redirect('/teacher/' . session('user_id'));
+        }
         return view('user-login');
     }
     function profile()
     {
 
         return view('user-teacher');
+    }
+    function faq()
+    {
+        return view('faq');
+    }
+    public function privacy_policy()
+    {
+        return view('privacyandpolicy');
+    }
+    public function terms_conditions()
+    {
+        return view('term-condition');
     }
 
 }

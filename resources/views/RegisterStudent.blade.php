@@ -192,6 +192,11 @@
     <!-- Student Registration Start -->
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <h4 class="alert alert-primary text-center">
+                Confused whether your child need a home tutor ?
+
+
+                 </h4>
             <div class="content-wrapper d-flex align-items-center auth px-0">
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
@@ -201,7 +206,7 @@
                             </div>
 
 
-                            <h6 class="fw-light">Find Your Tuitor Now  </h6>
+                            <h6 class="fw-light">Find Your Tutor Now  </h6>
                             <div class="alert alert-success alert-dismissible fade show" id="alert-success" role="alert" style="display: none;">
 
                             </div>
@@ -271,7 +276,7 @@
                                         placeholder="Duration" name="duration">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Choose Tuitor Gender</label>
+                                    <label for="exampleFormControlInput1">Choose Tutor Gender</label>
                                     <select name="gender" class="form-select" style="color: black; border-radius: 10px;">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>

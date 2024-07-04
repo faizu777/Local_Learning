@@ -713,6 +713,290 @@ label{
   left: 0;
   opacity: 0;
 }
+.bookshelf_wrapper {
+  position: relative;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.books_list {
+  margin: 0 auto;
+  width: 300px;
+  padding: 0;
+}
+
+.book_item {
+  position: absolute;
+  top: -120px;
+  box-sizing: border-box;
+  list-style: none;
+  width: 40px;
+  height: 120px;
+  opacity: 0;
+  background-color: #04bec4;
+  border: 5px solid white;
+  transform-origin: bottom left;
+  transform: translateX(300px);
+  -webkit-animation: travel 2500ms linear infinite;
+          animation: travel 2500ms linear infinite;
+}
+.book_item.first {
+  top: -140px;
+  height: 140px;
+}
+.book_item.first:before, .book_item.first:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: white;
+}
+.book_item.first:after {
+  top: initial;
+  bottom: 10px;
+}
+.book_item.second:before, .book_item.second:after, .book_item.fifth:before, .book_item.fifth:after {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 17.5px;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+}
+.book_item.second:after, .book_item.fifth:after {
+  top: initial;
+  bottom: 10px;
+}
+.book_item.third:before, .book_item.third:after {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+.book_item.third:after {
+  top: initial;
+  bottom: 10px;
+}
+.book_item.fourth {
+  top: -130px;
+  height: 130px;
+}
+.book_item.fourth:before {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 100%;
+  height: 17.5px;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+}
+.book_item.fifth {
+  top: -100px;
+  height: 100px;
+}
+.book_item.sixth {
+  top: -140px;
+  height: 140px;
+}
+.book_item.sixth:before {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  bottom: 31px;
+  left: 0px;
+  width: 100%;
+  height: 5px;
+  background-color: white;
+}
+.book_item.sixth:after {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+.book_item:nth-child(2) {
+  -webkit-animation-delay: 416.6666666667ms;
+          animation-delay: 416.6666666667ms;
+}
+.book_item:nth-child(3) {
+  -webkit-animation-delay: 833.3333333333ms;
+          animation-delay: 833.3333333333ms;
+}
+.book_item:nth-child(4) {
+  -webkit-animation-delay: 1250ms;
+          animation-delay: 1250ms;
+}
+.book_item:nth-child(5) {
+  -webkit-animation-delay: 1666.6666666667ms;
+          animation-delay: 1666.6666666667ms;
+}
+.book_item:nth-child(6) {
+  -webkit-animation-delay: 2083.3333333333ms;
+          animation-delay: 2083.3333333333ms;
+}
+
+.shelf {
+  width: 300px;
+  height: 5px;
+  margin: 0 auto;
+  background-color: white;
+  position: relative;
+}
+.shelf:before, .shelf:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #04bec4;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 30%, transparent 0);
+  background-size: 10px 10px;
+  background-position: 0 -2.5px;
+  top: 200%;
+  left: 5%;
+  -webkit-animation: move 250ms linear infinite;
+          animation: move 250ms linear infinite;
+}
+.shelf:after {
+  top: 400%;
+  left: 7.5%;
+}
+
+@-webkit-keyframes move {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 10px;
+  }
+}
+
+@keyframes move {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 10px;
+  }
+}
+@-webkit-keyframes travel {
+  0% {
+    opacity: 0;
+    transform: translateX(300px) rotateZ(0deg) scaleY(1);
+  }
+  6.5% {
+    transform: translateX(279.5px) rotateZ(0deg) scaleY(1.1);
+  }
+  8.8% {
+    transform: translateX(273.6px) rotateZ(0deg) scaleY(1);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(270px) rotateZ(0deg);
+  }
+  17.6% {
+    transform: translateX(247.2px) rotateZ(-30deg);
+  }
+  45% {
+    transform: translateX(165px) rotateZ(-30deg);
+  }
+  49.5% {
+    transform: translateX(151.5px) rotateZ(-45deg);
+  }
+  61.5% {
+    transform: translateX(115.5px) rotateZ(-45deg);
+  }
+  67% {
+    transform: translateX(99px) rotateZ(-60deg);
+  }
+  76% {
+    transform: translateX(72px) rotateZ(-60deg);
+  }
+  83.5% {
+    opacity: 1;
+    transform: translateX(49.5px) rotateZ(-90deg);
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px) rotateZ(-90deg);
+  }
+}
+@keyframes travel {
+  0% {
+    opacity: 0;
+    transform: translateX(300px) rotateZ(0deg) scaleY(1);
+  }
+  6.5% {
+    transform: translateX(279.5px) rotateZ(0deg) scaleY(1.1);
+  }
+  8.8% {
+    transform: translateX(273.6px) rotateZ(0deg) scaleY(1);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(270px) rotateZ(0deg);
+  }
+  17.6% {
+    transform: translateX(247.2px) rotateZ(-30deg);
+  }
+  45% {
+    transform: translateX(165px) rotateZ(-30deg);
+  }
+  49.5% {
+    transform: translateX(151.5px) rotateZ(-45deg);
+  }
+  61.5% {
+    transform: translateX(115.5px) rotateZ(-45deg);
+  }
+  67% {
+    transform: translateX(99px) rotateZ(-60deg);
+  }
+  76% {
+    transform: translateX(72px) rotateZ(-60deg);
+  }
+  83.5% {
+    opacity: 1;
+    transform: translateX(49.5px) rotateZ(-90deg);
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px) rotateZ(-90deg);
+  }
+}
+@media (max-width: 768px) {
+#status1{
+   margin-top: 10px;
+}
+#status2{
+    margin-top: 10px;
+}
+}
+
+
+
 
 </style>
 
@@ -771,40 +1055,64 @@ label{
                         <p class="m-b-10">{{$teacher->email}}</p>
                         {{-- <a href="#" class="btn btn-sm btn-info mb-2">Edit Profile</a> --}}
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                           Edit Profile
+                           View Profile
                           </button>
                           &nbsp; &nbsp; &nbsp; &nbsp;
                           @if($teacher->status == 'not approved')
 
-                          <button type="button" class="btn btn-danger">
+                          <button type="button" class="btn btn-danger" id="status2">
                             {{$teacher->status}}
                              </button>
 
                           @else
-                          <button type="button" class="btn btn-primary">
+                          <button type="button" class="btn btn-primary" id="status1">
                             {{$teacher->status}}
                           </button>
                           @endif
 
+                          <div class="row float-end">
+                            <a href="{{route('user-logout')}}" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                              </svg>
+                            </a>
 
+
+                          </div>
                      </div>
                      <!-- END profile-header-info -->
                   </div>
                   <!-- END profile-header-content -->
                   <!-- BEGIN profile-header-tab -->
-                  <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">POSTS</a></li>
-                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">ABOUT</a></li>
-                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">PHOTOS</a></li>
-                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_">VIDEOS</a></li>
-                     <li class="nav-item"><a href="#" target="__blank" class="nav-link_ active show">FRIENDS</a></li>
-                  </ul>
+
+
                   <!-- END profile-header-tab -->
                </div>
+
             </div>
             <!-- end profile -->
             <!-- begin profile-content -->
-            <div class="profile-content z-index-10">
+@if($teacher->status == 'not approved')
+<div class="profile-content z-index-10 content-full-width" style="height: 70vh;">
+    <div class="alert alert-primary d-flex justify-content-center align-items-center" style="font-size: 32px;">Wait for approval</div>
+    <div class="bookshelf_wrapper">
+        <ul class="books_list">
+          <li class="book_item first"></li>
+          <li class="book_item second"></li>
+          <li class="book_item third"></li>
+          <li class="book_item fourth"></li>
+          <li class="book_item fifth"></li>
+          <li class="book_item sixth"></li>
+        </ul>
+        <div class="shelf"></div>
+      </div>
+
+</div>
+
+@else
+
+            <div class="profile-content z-index-10 content-full-width">
                <!-- begin tab-content -->
                <div class="tab-content p-0">
                   <!-- begin #profile-post tab -->
@@ -815,8 +1123,8 @@ label{
                         <li>
                            <!-- begin timeline-time -->
                            <div class="timeline-time">
-                              <span class="date">Subject</span>
-                              <span class="time">{{$student->Subject}}</span>
+                              <span class="date">Payment</span>
+                              <span class="time"><i class="fas fa-rupee-sign"></i>{{$student->fee}}</span>
                            </div>
                            <!-- end timeline-time -->
                            <!-- begin timeline-icon -->
@@ -828,31 +1136,30 @@ label{
                            <div class="timeline-body">
                               <div class="timeline-header">
                                  <span class="userimage"><img src="{{asset($student->profile_img)}}" alt=""></span>
-                                 <span class="username"><a href="javascript:;">{{$student->Name}}</a> <small></small></span>
+                                 <span class="username"><a href="javascript:;">{{$student->student_id}}</a> <small></small></span>
                                  <span class="pull-right text-muted">{{$student->Board}}</span>
                               </div>
                               <div class="timeline-content">
                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis quis tincidunt luctus.
-                                    Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                    <h6>{{$student->gender}}:Tutor Required</h6>
+
+                                    <h6>Address:{{$student->address}}</h6>
+
+                                    <h6> Class: {{$student->Class}}</h6>
+
+                                    <h6> Subject: {{$student->Subject}}</h6>
+
+                                    <h6> Board: {{$student->Board}}</h6>
+
+                                    <h6> Duration: {{$student->duration}}</h6>
+
+
                                  </p>
                               </div>
                               <div class="timeline-likes">
-                                 <div class="stats-right">
-                                    <span class="stats-text">259 Shares</span>
-                                    <span class="stats-text">21 Comments</span>
-                                 </div>
-                                 <div class="stats">
-                                    <span class="fa-stack fa-fw stats-icon">
-                                    <i class="fa fa-circle fa-stack-2x text-danger"></i>
-                                    <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
-                                    </span>
-                                    <span class="fa-stack fa-fw stats-icon">
-                                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                    <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                    <span class="stats-total">4.3k</span>
-                                 </div>
+                                 <div class="btn btn-primary">get more detail</div>
+
+
                               </div>
 
 
@@ -871,6 +1178,7 @@ label{
                </div>
                <!-- end tab-content -->
             </div>
+            @endif
             <!-- end profile-content -->
          </div>
       </div>
@@ -883,81 +1191,7 @@ label{
     <!-- Login End -->
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Gallery</h4>
-                    <div class="row g-2 pt-2">
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="/img/course-1.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                        Designed By <a class="border-bottom" href="#">Faizan Khan</a><br><br>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   @include('footer')
     <!-- Footer End -->
 
     <!-- Back to Top -->
@@ -981,7 +1215,7 @@ label{
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+              <h5 class="modal-title" id="exampleModalLabel">View Profile</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body-lg">
@@ -994,7 +1228,7 @@ label{
 
 
                                 <input type="text" class="form-control form-control-lg" placeholder="Teacher Name"
-                                name="name" style="border-radius: 10px;" value="{{$teacher->name}}">
+                                name="name" style="border-radius: 10px;" value="{{$teacher->name}}" readonly>
 
 
 
@@ -1002,7 +1236,7 @@ label{
                           <div class="col-md-4 mb-4">
 
                             <input placeholder="Email" type="email" class="form-control form-control-lg"
-                                name="email" id="exampleFormControlImail" style="border-radius: 10px;" value="{{$teacher->email}}">
+                                name="email" id="exampleFormControlImail" style="border-radius: 10px;" value="{{$teacher->email}}" readonly>
 
 
                           </div>
@@ -1010,7 +1244,7 @@ label{
 
 
                             <input data-placeholder="DOB" type="date" class="form-control form-control-lg"
-                            name="Dob" id="exampleFormControlInput1" style="border-radius: 10px;" value="{{$teacher->Dob}}">
+                            name="Dob" id="exampleFormControlInput1" style="border-radius: 10px;" value="{{$teacher->Dob}}" readonly>
 
 
 
@@ -1018,32 +1252,32 @@ label{
                         </div>
                     <div class="row">
                           <div class="col-md-4 mb-4">
-                            <input type="text" class="form-control form-control-lg" placeholder="fee" name="fee" style="border-radius: 10px;" value="{{$teacher->expected_monthly_tuition_fee}}">
+                            <input type="text" class="form-control form-control-lg" placeholder="fee" name="fee" style="border-radius: 10px;" value="{{$teacher->expected_monthly_tuition_fee}}" readonly>
                         </div>
 
                           <div class="col-md-4 mb-4">
                             <input type="number" class="form-control form-control-lg" placeholder="WhatsApp Number"
-                            name="WhatsApp_number" style="border-radius: 10px;" value="{{$teacher->whatsapp_number}}">
+                            name="WhatsApp_number" style="border-radius: 10px;" value="{{$teacher->whatsapp_number}}"  readonly>
                         </div>
                         <div class="col-md-4 mb-4">
                             <input type="number" class="form-control form-control-lg" placeholder="Adhaar Number"
-                            name="Adhaar_number" style="border-radius: 10px;" value="{{$teacher->adhaar_number}}">
+                            name="Adhaar_number" style="border-radius: 10px;" value="{{$teacher->adhaar_number}}" readonly>
                         </div>
 </div>
 <div class="row">
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg" placeholder="Present Address"
-                            name="presentaddress" style="border-radius: 10px;" value="{{$teacher->present_address}}">
+                            name="presentaddress" style="border-radius: 10px;" value="{{$teacher->present_address}}" readonly>
 
                           </div>
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg"
-                            placeholder="Permanent Address" name="permanentaddress" style="border-radius: 10px;" value="{{$teacher->permanent_address}}">
+                            placeholder="Permanent Address" name="permanentaddress" style="border-radius: 10px;" value="{{$teacher->permanent_address}}" readonly>
 
                         </div>
                         <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg" placeholder="Tuition Name"
-                                name="tuitionname" style="border-radius: 10px;" value="{{$teacher->tuition_name}}">
+                                name="tuitionname" style="border-radius: 10px;" value="{{$teacher->tuition_name}}" readonly>
                         </div>
 </div>
 <div class="row">
@@ -1051,31 +1285,31 @@ label{
 
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg"
-                                placeholder="Teaching Experience" name="teachingexp" style="border-radius: 10px;" value="{{$teacher->teaching_experience}}">
+                                placeholder="Teaching Experience" name="teachingexp" style="border-radius: 10px;" value="{{$teacher->teaching_experience}}" readonly>
                           </div>
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg" placeholder="Qualification"
-                            name="qualification" style="border-radius: 10px;" value="{{$teacher->qualification}}">
+                            name="qualification" style="border-radius: 10px;" value="{{$teacher->qualification}}" readonly>
 
                         </div>
                         <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg" placeholder="Major Subect"
-                            name="major" style="border-radius: 10px;" value="{{$teacher->major_subject}}">
+                            name="major" style="border-radius: 10px;" value="{{$teacher->major_subject}}" readonly>
                         </div>
 </div>
 <div class="row">
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg"
-                            placeholder="Subject/class which you can teach" name="subject" style="border-radius: 10px;" value="{{$teacher->subject_can_teach}}">
+                            placeholder="Subject/class which you can teach" name="subject" style="border-radius: 10px;" value="{{$teacher->subject_can_teach}}" readonly>
 
                           </div>
                           <div class="col-md-4 mb-4">
 
                             <input type="text" class="form-control form-control-lg" placeholder="Board Name"
-                                name="board" style="border-radius: 10px;" value="{{$teacher->board_name}}">
+                                name="board" style="border-radius: 10px;" value="{{$teacher->board_name}}" readonly>
                           </div>
                           <div class="col-md-4 mb-4">
-                            <select name="gender" class="form-select" style="border-radius: 10px;"id="gender">
+                            <select name="gender" class="form-select" style="border-radius: 10px;"id="gender" readonly>
                                 <option value="male" style="border-radius: 10px;">Male</option>
                                 <option value="female" style="border-radius: 10px;">Female</option>
                             </select>
@@ -1084,7 +1318,7 @@ label{
 <div class="row">
                           <div class="col-md-4 mb-4">
                             <input type="text" class="form-control form-control-lg" placeholder="phone number"
-                                name="Contact_number" style="border-radius: 10px;" value="{{$teacher->phone_number}}">
+                                name="Contact_number" style="border-radius: 10px;" value="{{$teacher->phone_number}}" readonly>
                           </div>
 </div>
                   {{-- <div class="row" style="margin-right:19px;">
@@ -1123,7 +1357,7 @@ label{
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </form>
           </div>

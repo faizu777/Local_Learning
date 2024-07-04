@@ -15,15 +15,15 @@ class AuthUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(session()->has('user')){
-            
-                
+        if(session()->has('admin')){
+
+
             return $next($request) ;
         }
             else{
-                
+
               return redirect()->route('loginpage');
             }
-        
+
     }
 }

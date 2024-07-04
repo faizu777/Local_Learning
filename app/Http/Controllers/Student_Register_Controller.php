@@ -16,7 +16,7 @@ class Student_Register_Controller extends Controller
             'Contact_number' => 'required |min:10 |max:10',
             'password' => 'required',
             'email' => 'required|email|unique:student__registers',
-            'profile_pic' => 'required|image',
+            'profile_pic' => 'image',
             'gender' => 'required',
             'address' => 'required',
             'duration' => 'required',
@@ -24,6 +24,7 @@ class Student_Register_Controller extends Controller
 
         ]);
         $stdData = new Student_Register();
+        $stdData->student_id = 'Student'.rand(100000,999999);
         $stdData->Name = $req['name'];
         $stdData->Class = $req['class'];
         $stdData->Subject = $req['subject'];
