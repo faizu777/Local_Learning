@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Teacher_Register_Data;
 use App\Models\Student_Register;
-
+use App\Models\city;
+use App\Models\area_in_city;
 
 class page extends Controller
 {
+    function get_city()
+    {
+        $city = city::all();
+        return response()->json(['city' => $city],200);
+    }
+    function get_area($city_id)
+    {
+        $area = area_in_city::where('city_id',$city_id)->get();
+        return response()->json(['area' => $area],200);
+    }
     function index()
     {
 

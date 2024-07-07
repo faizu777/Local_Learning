@@ -332,6 +332,21 @@
 
                         </div>
                         <div class="form-group">
+
+                            <select name="city" class="form-select" style="color: black; border-radius: 10px;" id="city">
+                                <option selected >Select City</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+
+                            <select name="area" class="form-select" style="color: black; border-radius: 10px;" id="area">
+                                <option selected >Select Area</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <input type="text" class="form-control form-control-lg" placeholder="Tuition Name"
                                 name="tuitionname" style="border-radius: 10px;">
 
@@ -420,6 +435,39 @@
     <script src="/js/main.js"></script>
     <script src="/src/assets/js/uploaddoc.js"></script>
     <!--Ajax Form Script-->
+    <script>
+        $(document).ready(function() {
+    $('#city').on('change', function() {
+        var cityId = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/area/' + cityId,
+            success: function(data) {
+                $('#area').empty();
+                $.each(data.area, function(index, area) {
+                    $('#area').append('<option value="' + area.id + '">' + area.area_name + '</option>');
+                });
+            }
+        });
+    });
+});
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $.ajax({
+            type: 'GET',
+            url: '/city',
+            success: function(data) {
+
+                $.each(data.city, function(index, city) {
+                    $('#city').append('<option value="' + city.city_id + '">' + city.city_name + '</option>');
+                });
+            }
+        });
+        });
+
+</script>
 
         <script>
         function validateInput(input) {

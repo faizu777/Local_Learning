@@ -839,7 +839,7 @@
                                                                                 <h6>{{$teacher->gender}}</h6>
                                                                             </td>
                                                                             <td>
-                                                                                <a href="{{ route('teacherdetail', $teacher->Teacher_id) }}"><div class="btn btn-primary">view more</div> </a>
+                                                                                <a href="{{ route('teacherdetail', $teacher->Teacher_id) }}"><div class="btn btn-sm btn-primary">view more</div> </a>
 
 
                                                                             </td>
@@ -862,7 +862,7 @@
 
                                                                             <td><a
                                                                                     href="{{ route('deleteteacher', $teacher->Teacher_id) }}"><button
-                                                                                        class="btn btn-danger ">
+                                                                                        class="btn btn-sm btn-danger ">
                                                                                         Delete</button></a></td>
                                                                         </tr>
                                                                     @endforeach

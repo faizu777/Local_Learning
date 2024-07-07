@@ -25,15 +25,7 @@ return redirect('/teacher/'.$teacher->Teacher_id);
     }
     return back()->with('error','Your  password is wrong');
 }
-$student = Student_Register::where('email',$request->email)->first();
-if($student)
-{
-    if($student->Password==$request->password)
-    {
 
-    }
-    return back()->with('error','Your  password is wrong');
-}
 return back()->with('error','Your ID and Password is wrong');
     }
 

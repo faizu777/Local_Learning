@@ -703,13 +703,15 @@ label{
   position: relative;
   color: #7f7f7f;
   top: 125px;
-  left: 100px;
+  width: 10px;
+  left: 0px;
   z-index: 9999;
 }
 
 .input--file input[type="file"] {
   position: absolute;
   top: 0;
+  width: 50px;
   left: 0;
   opacity: 0;
 }
@@ -1119,6 +1121,8 @@ label{
                   <div class="tab-pane fade active show" id="profile-post">
                      <!-- begin timeline -->
                      <ul class="timeline">
+                        @if(count($student)>0)
+
                         @foreach($student as $student)
                         <li>
                            <!-- begin timeline-time -->
@@ -1135,7 +1139,11 @@ label{
                            <!-- begin timeline-body -->
                            <div class="timeline-body">
                               <div class="timeline-header">
+                                @if($student->profile_img)
                                  <span class="userimage"><img src="{{asset($student->profile_img)}}" alt=""></span>
+                                 @else
+                                 <span class="userimage"><img src="{{asset('extenalimges/student.png')}}" alt=""></span>
+                                 @endif
                                  <span class="username"><a href="javascript:;">{{$student->student_id}}</a> <small></small></span>
                                  <span class="pull-right text-muted">{{$student->Board}}</span>
                               </div>
@@ -1143,7 +1151,9 @@ label{
                                  <p>
                                     <h6>{{$student->gender}}:Tutor Required</h6>
 
-                                    <h6>Address:{{$student->address}}</h6>
+                                    <h6>Address:{{ str_replace(substr($student->address, 5), str_repeat('*', strlen(substr($student->address, 5))), $student->address) }}</h6>
+
+                                    <h6>Contact Number :{{ str_replace(substr($student->Contact_number, 3), str_repeat('*', strlen(substr($student->Contact_number, 3))), $student->Contact_number) }}</h6>
 
                                     <h6> Class: {{$student->Class}}</h6>
 
@@ -1157,7 +1167,7 @@ label{
                                  </p>
                               </div>
                               <div class="timeline-likes">
-                                 <div class="btn btn-primary">get more detail</div>
+                               <div class="btn btn-primary" id="notification" data-teacher_id={{session('user_id')}} data-subject={{$student->Subject}} data-student_id={{$student->student_id}}>get more detail</div>
 
 
                               </div>
@@ -1167,7 +1177,9 @@ label{
                            <!-- end timeline-body -->
                         </li>
                         @endforeach
-
+@else
+                        <li><h1><div class="alert alert-danger"> No Students Found  Your Area</div></h1> </li>
+@endif
 
 
 
@@ -1364,15 +1376,42 @@ label{
         </div>
       </div>
       <script>
-$('document').ready(function(){
-    $('#gender').val("{{$teacher->gender}}");
+        $('#notification').on('click', function() {
+    var teacherId = $(this).data('teacher_id');
+    var subject = $(this).data('subject');
+    var studentId = $(this).data('student_id');
+$(this).prop('disabled', true);
+$(this).html('Sending....');
+var btn = $(this);
+    $.ajax({
+        type: 'GET',
+        url: '{{ route('notification') }}',
+        data: {
+            teacher_id: teacherId,
+            subject: subject,
+            student_id: studentId
+        },
+        success: function(response) {
+            if (response.success) {
+                btn.html('get more detail');
+                toastr.success('Notification Sent Successfully');
+                console.log(response.success);
+            } else {
+                toastr.error('Notification Failed');
+                console.log(response.error);
+            }
+        },
+        error: function(error) {
+            btn.html('sent !');
+            toastr.error(error.responseJSON.error);
+            console.log(error);
+        },
 
-    const form = document.querySelector('#update-profile-form');
-const fileInput = document.querySelector('input[type="file"]');
-
-fileInput.addEventListener('change', () => {
-  form.submit();
+    });
 });
+      </script>
+      <script>
+$('document').ready(function(){
     toastr.options = {
                 "closeButton": true,
                 "debug": false,
@@ -1390,6 +1429,15 @@ fileInput.addEventListener('change', () => {
                 "showMethod": "show",
                 "hideMethod": "hide"
             };
+    $('#gender').val("{{$teacher->gender}}");
+
+    const form = document.querySelector('#update-profile-form');
+const fileInput = document.querySelector('input[type="file"]');
+
+fileInput.addEventListener('change', () => {
+  form.submit();
+});
+
             $('#update-teacher-form').submit(function (e) {
                 e.preventDefault();
             $.ajax({

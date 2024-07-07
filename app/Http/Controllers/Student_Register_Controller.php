@@ -14,24 +14,28 @@ class Student_Register_Controller extends Controller
             'subject' => 'required',
             'board' => 'required',
             'Contact_number' => 'required |min:10 |max:10',
-            'password' => 'required',
-            'email' => 'required|email|unique:student__registers',
-            'profile_pic' => 'image',
+
+           'parent_name' => 'required',
+            'profile_pic' => 'image|max:3048|dimensions:max_width=474,max_height=474',
             'gender' => 'required',
             'address' => 'required',
             'duration' => 'required',
             'fee' => 'required',
+            'city' => 'required',
+            'area' => 'required',
 
         ]);
         $stdData = new Student_Register();
         $stdData->student_id = 'Student'.rand(100000,999999);
         $stdData->Name = $req['name'];
         $stdData->Class = $req['class'];
+        $stdData->city= $req['city'];
+        $stdData->area= $req['area'];
         $stdData->Subject = $req['subject'];
         $stdData->Board = $req['board'];
         $stdData->Contact_number = $req['Contact_number'];
-        $stdData->Password = $req['password'];
-        $stdData->email= $req['email'];
+
+        $stdData->parent_name= $req['parent_name'];
         $stdData->gender = $req['gender'];
         $stdData->address = $req['address'];
         $stdData->duration = $req['duration'];

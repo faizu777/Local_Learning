@@ -9,19 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('student__registers', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name');
-            $table->string('Class');
-            $table->string('Subject');
-            $table->string('Board');
-            $table->string('Contact_number');
-            $table->string('Password');
-            $table->timestamps();
-        });
-    }
+    // public function up(): void
+    // {
+    //     Schema::create('student__registers', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->string('Name');
+    //         $table->string('Class');
+    //         $table->string('Subject');
+    //         $table->string('Board');
+    //         $table->string('Contact_number');
+    //         $table->string('Password');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

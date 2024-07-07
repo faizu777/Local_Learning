@@ -7,9 +7,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin') }}">
-                <i class="mdi mdi-grid-large menu-icon"></i>
-                <span class="menu-title">Dashboard
+            <a class="nav-link" href="{{ route('std_feedback') }}">
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                <span class="menu-title">Add Student Feedback
             </a>
         </li>
         {{-- <li class="nav-item nav-category">UI Elements</li>
