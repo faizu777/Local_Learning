@@ -32,6 +32,6 @@ return back()->with('error','Your ID and Password is wrong');
     public function logout()
     {
         session()->forget('user_id');
-        return redirect('/');
+        return redirect('/login-user');
     }
 }

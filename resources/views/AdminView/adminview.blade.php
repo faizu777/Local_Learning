@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/src/assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="/src/assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 </head>
 
 <body class="with-welcome-text">
@@ -30,190 +31,7 @@
 
     </div>
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-            <div class="me-3">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button"
-                    data-bs-toggle="minimize">
-                    <span class="icon-menu"></span>
-                </button>
-            </div>
-            <div>
-                <a class="navbar-brand brand-logo" href="">
-                    <img src="/src//assets/images/logo.svg" alt="logo" />
-                </a>
-                <a class="navbar-brand brand-logo-mini" href="">
-                    <img src="/src//assets/images/logo-mini.svg" alt="logo" />
-                </a>
-            </div>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-top">
-            <ul class="navbar-nav">
-                <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                    <h1 class="welcome-text"> Welcome Admin <span class="text-black fw-bold">
-                            @if (session()->has('user'))
-                                {{ session('user')->username }}
-                            @endif
-                        </span></h1>
-                    <h3 class="welcome-sub-text">Your performance summary this week </h3>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown d-none d-lg-block">
-                    <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
-                        href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                        aria-labelledby="messageDropdown">
-                        <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left">Select category</p>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                                <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
-                            </div>
-                        </a>
-
-
-                    </div>
-                </li>
-                <li class="nav-item d-none d-lg-block">
-                    <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-                        <span class="input-group-addon input-group-prepend border-right">
-                            <span class="icon-calendar input-group-text calendar-icon"></span>
-                        </span>
-                        <input type="text" class="form-control">
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <form class="search-form" action="#">
-                        <i class="icon-search"></i>
-                        <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-                    </form>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator" id="notificationDropdown" href="#"
-                        data-bs-toggle="dropdown">
-                        <i class="icon-bell"></i>
-                        <span class="count"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                        aria-labelledby="notificationDropdown">
-                        <a class="dropdown-item py-3 border-bottom">
-                            <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                            <span class="badge badge-pill badge-success float-right">View all</span>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-alert m-auto text-success"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
-                                <p class="fw-light small-text mb-0"> Just now </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-settings m-auto text-success"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
-                                <p class="fw-light small-text mb-0"> Private message </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-airballoon m-auto text-success"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
-                                <p class="fw-light small-text mb-0"> 2 days ago </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="icon-mail icon-lg"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                        aria-labelledby="countDropdown">
-                        <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                            <span class="badge badge-pill badge-success float-right">View all</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="#" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                                <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="#" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                                <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="#" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                                <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                    <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img class="img-xs rounded-circle" src="src/assets/images/profile-Transparent.png"
-                            alt="Profile image"> </a>
-                    <span class = " text text-success">
-                        <h4> Profile</h4>
-                    </span>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-
-                            @if (session()->has('user'))
-                                <p class="mb-1 mt-3 font-weight-semibold"> {{ session('user')->username }}</span></p>
-                                <p class="fw-light text-muted mb-0">{{ session('user')->email }}</p>
-                            @endif
-
-                        </div>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-account-outline text-success me-2"></i> My
-                            Profile <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-message-text-outline text-success me-2"></i>
-                            Messages</a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-calendar-check-outline text-success me-2"></i>
-                            Activity</a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-help-circle-outline text-success me-2"></i>
-                            FAQ</a>
-                        <a href ="{{ route('logout') }}" class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-power text-success me-2"></i>Sign Out</a>
-                    </div>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                data-bs-toggle="offcanvas">
-                <span class="mdi mdi-menu"></span>
-            </button>
-        </div>
-    </nav>
+    @include('AdminView.header-nav')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_settings-panel.html -->
@@ -454,166 +272,9 @@
                             </div>
 
 
-                            <div class="tab-content tab-content-basic">
 
-                                <div class="tab-pane fade show" id="addteacher" role="tabpanel"
-                                    aria-labelledby="addteacher">
-                                    <!--Add Teacher-->
-                                    <div class="container-scroller">
-                                        <div class="container-fluid page-body-wrapper full-page-wrapper">
-                                            {{-- <div class="content-wrapper d-flex align-items-center auth px-0">
-                                                <div class="row w-100 mx-0">
-                                                    <div class="col-lg-8 mx-auto">
-
-                                                        <center>
-                                                            <h3 class="fw-bold">Add Teacher</h3>
-                                                            @if (session()->has('success'))
-                                                                <div class="alert alert-success">
-                                                                    {{ session('success') }}
-                                                                </div>
-                                                            @endif
-                                                            @if (session()->has('teachererror'))
-                                                                <div class="alert alert-danger">
-                                                                    {{ session('teachererror') }}
-                                                                </div>
-                                                            @endif
-
-                                                            @if ($errors->any())
-                                                                <div class="alert alert-danger">Teacher Added Failed
-                                                                </div>
-                                                            @endif
-
-
-
-                                                        </center>
-                                                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                                                            <form class="pt-3" method="POST" action="/Addteacher">
-                                                                <div class="text from-group text-warning">Fill ID When
-                                                                    you Update Teacher</div>
-                                                                <div class="form-group ">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher ID" name="id">
-
-                                                                </div>
-                                                                @csrf
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputEmail1"
-                                                                        placeholder="Teacher name" name="name"
-                                                                        required>
-                                                                    @error('name')
-                                                                        <span class="text text-danger"> {{ $message }}
-                                                                        </span>
-                                                                    @enderror
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher address" name="address"
-                                                                        required>
-                                                                    @error('address')
-                                                                        <span class="text text-danger"> {{ $message }}
-                                                                        </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher ID_NO" name="idno"
-                                                                        required>
-                                                                    @error('idno')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher Course" name="course"
-                                                                        required>
-                                                                    @error('course')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher Salary" name="salary"
-                                                                        required>
-                                                                    @error('salary')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg"
-                                                                        id="exampleInputPassword1"
-                                                                        placeholder="Teacher Status ex-active"
-                                                                        name="status" required>
-                                                                    @error('status')
-                                                                        <span class="text text-danger">
-                                                                            {{ $message }} </span>
-                                                                    @enderror
-                                                                </div>
-
-                                                                <div class="mt-3">
-                                                                    <input type="submit" value="submit"
-                                                                        class="btn btn-block btn-primary btn-lg font-weight-medium " />
-
-
-                                                                    <input type="button" value="Update"
-                                                                        class="btn btn-block btn-primary btn-lg font-weight-medium " />
-                                                            </form>
-
-
-
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                            <!-- content-wrapper ends -->
-                                        </div>
-                                        <!-- page-body-wrapper ends -->
-                                        <!-- Add-wrapper ends -->
-                                    </div>
-                                </div>
-                            </div>
                             <!-- Add-course starts -->
-                            <div class="tab-content tab-content-basic">
-                                <div class="tab-pane fade show" id="addcourse" role="tabpanel"
-                                    aria-labelledby="addteacher">
 
-                                    <div class="container-scroller">
-                                        <div class="container-fluid page-body-wrapper full-page-wrapper">
-                                            {{-- <div class="content-wrapper d-flex align-items-center auth px-0">
-                                                <div class="row w-100 mx-0">
-                                                    <div class="col-lg-8 mx-auto">
-                                                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                            <!-- content-wrapper ends -->
-                                        </div>
-                                        <!-- page-body-wrapper ends -->
-
-                                        <!-- Add-wrapper ends -->
-                                    </div>
-                                </div>
                                 <!-- course starts -->
                                 <div class="tab-content tab-content-basic">
                                     <div class="tab-pane fade show" id="aud" role="tabpanel"
@@ -641,11 +302,14 @@
                                                         @endif
                                                     </div>
                                                     <div class="table-responsive">
-                                                        <table class="table table-striped">
+                                                        <table class="table table-striped" id="studentTable">
                                                             <thead>
                                                                 <tr>
                                                                     <th>
                                                                         Student Name
+                                                                    </th>
+                                                                    <th>
+                                                                        Parent Name
                                                                     </th>
                                                                     <th>
                                                                         Class
@@ -663,7 +327,16 @@
                                                                         Duration
                                                                     </th>
                                                                     <th>
+                                                                        City
+                                                                    </th>
+                                                                    <th>
+                                                                        Area
+                                                                    </th>
+                                                                    <th>
                                                                         Delete
+                                                                    </th>
+                                                                    <th>
+                                                                       View all Detail
                                                                     </th>
                                                                 </tr>
                                                             </thead>
@@ -671,18 +344,35 @@
                                                                 @foreach ($students as $student)
                                                                     <tr>
                                                                         <td> {{ $student->Name}} </td>
+                                                                        <td> {{ $student->Parent_name}} </td>
                                                                         <td> {{ $student->Class }} </td>
                                                                         <td> {{ $student->Subject }} </td>
                                                                         <td> {{ $student->Board }} </td>
                                                                         <td> {{ $student->fee }} </td>
                                                                         <td> {{ $student->duration }} </td>
+                                                                        @php
+                                                                            $city = DB::table('cities')->where('city_id',$student->city)->first();
+                                                                            $area = DB::table('area_in_cities')->where('city_id',$student->city)->where('id',$student->area)->first();
+                                                                        @endphp
+                                                                        @if ($city && $area)
+                                                                        <td> {{ $city->city_name }} </td>
+                                                                        <td> {{ $area->area_name }} </td>
+                                                                        @else
+                                                                        <td> Not Found </td>
+                                                                        <td> Not Found </td>
+                                                                        @endif
                                                                         <td> <a
                                                                                 href="#"><button
                                                                                     class="btn btn-danger ">
                                                                                     <i class="mdi mdi-delete"></i></button></a></td>
+                                                                                    <td> <a
+                                                                                        href="{{route('studentdetail', $student->student_id)}}"><button
+                                                                                            class="btn btn-primary ">
+                                                                                            <i class="mdi mdi-eye"></i></button></a></td>
 
 
                                                                     </tr>
+
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
@@ -705,7 +395,7 @@
                         <div class="tab-pane fade show active" id="overview" role="tabpanel"
                             aria-labelledby="overview">
                             <div class="row">
-                                <div class="col-sm-12">
+                                {{-- <div class="col-sm-12">
                                     <div class="statistics-details d-flex align-items-center justify-content-between">
                                         <div>
                                             <p class="statistics-title">No of Teachers</p>
@@ -743,7 +433,7 @@
                                                     class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="row">
@@ -759,8 +449,8 @@
                                                             <div>
                                                                 <h4 class="card-title card-title-dash">Teachers Table
                                                                 </h4>
-                                                                <p class="card-subtitle card-subtitle-dash">You have
-                                                                    {{ $No_Teacher }} Teachers </p>
+                                                                <h5>No of Teacher</h5>
+                                                    <h4> {{ $No_Teacher }} </h4>
                                                             </div>
                                                             @if (session()->has('deleteteacher'))
                                                                 <span
@@ -768,7 +458,7 @@
                                                             @endif
                                                         </div>
                                                         <div class="table-responsive  mt-1">
-                                                            <table class="table select-table">
+                                                            <table class="table select-table" id="myTable">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
@@ -900,7 +590,9 @@
     <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-
+</script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script>
+<scrip scr="https://cdn.datatables.net/2.0.8/js/dataTables.material.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <!-- plugins:js -->
     <script src="/src/assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="/src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
@@ -922,7 +614,14 @@
 
     <script src="/src/assets/js/uploadimg.js"></script>
     <!-- <script src="../../assets/js/Chart.roundedBarCharts.js"></script> -->
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <!-- End custom js for this page-->
+    <script>
+        $(document).ready(function() {
+            let table = new DataTable('#myTable');
+            let studentTable = new DataTable('#studentTable');
+        });
+    </script>
 </body>
 
 </html>

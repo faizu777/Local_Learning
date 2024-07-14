@@ -8401,7 +8401,8 @@
   --bs-danger: #F95F53;
   --bs-light: #fbfbfb;
   --bs-dark: #1E283D;
-  --bs-primary-rgb: 31, 59, 179;
+  /* --bs-primary-rgb: 31, 59, 179; */
+  --bs-primary-rgb: 6, 187, 204;
   --bs-secondary-rgb: 241, 241, 241;
   --bs-success-rgb: 52, 177, 170;
   --bs-info-rgb: 82, 205, 255;
@@ -11499,12 +11500,12 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   --bs-btn-bg: #06BBCC;
   --bs-btn-border-color: #06BBCC;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #1a3298;
-  --bs-btn-hover-border-color: #192f8f;
+  --bs-btn-hover-bg: #249D9F;
+  --bs-btn-hover-border-color:#249D9F;
   --bs-btn-focus-shadow-rgb: 65, 88, 190;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #192f8f;
-  --bs-btn-active-border-color: #172c86;
+  --bs-btn-active-bg:#249D9F;
+  --bs-btn-active-border-color: #249D9F;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #06BBCC;

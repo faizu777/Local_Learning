@@ -37,7 +37,9 @@
 
     .profile-header {
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    height: 120px;
+
 }
 
 .profile-header .profile-header-cover {
@@ -50,6 +52,7 @@
     right: 0;
     top: 0;
     bottom: 0
+    height: 120px;
 }
 
 .profile-header .profile-header-cover:before {
@@ -62,38 +65,51 @@
     background-color: #23e1e9;
 background-image: linear-gradient(160deg, #23e1e9 0%, #4ec8b4 50%, #158677 100%);
 
-
+height: 120px;
 }
 
 .profile-header .profile-header-content {
     color: #fff;
-    padding: 25px
+   height: 120px;
+
 }
 
 .profile-header-img {
     float: left;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
+    aspect-ratio: 3/2;
+    object-fit: contain;
     position: relative;
+    top: -10px;
     z-index: 10;
     margin: 0 0 -20px;
-    padding: 3px;
-    border-radius: 4px;
+
+    border : 4px solid #fff;
+    border-radius: 50%;
     background: #fff
+
 }
 
 .profile-header-img img {
     max-width: 100%
+
 }
 
 .profile-header-info h4 {
+
     font-weight: 500;
-    color: #fff
+    color: #fff;
+    position: relative;
+    top: -20px;
+
+
+
 }
 
 .profile-header-img+.profile-header-info {
-    margin-left: 140px
+    margin-left: 120px
 }
 
 .profile-header .profile-header-content,
@@ -251,7 +267,7 @@ background-image: linear-gradient(160deg, #23e1e9 0%, #4ec8b4 50%, #158677 100%)
     text-align: center;
     font-size: 72px;
     margin-bottom: 10px;
-    border: 2px solid #E2E7EB;
+    border: 2px solid #e2eaeb;
     overflow: hidden;
     border-radius: 4px;
 
@@ -531,6 +547,17 @@ select.form-control:not([size]):not([multiple]) {
     padding: 20px 25px;
     border-radius: 6px
 }
+@media (max-width: 768px)
+{
+    .timeline .timeline-body {
+    margin-left: 25%;
+    margin-right: 5%;
+    background: #fff;
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 6px
+}
+}
 
 .timeline .timeline-body:before {
     content: '';
@@ -613,40 +640,6 @@ select.form-control:not([size]):not([multiple]) {
 .timeline-footer a:not(.btn):hover {
     color: #2d353c
 }
-
-.timeline-likes {
-    color: #6d767f;
-    font-weight: 600;
-    font-size: 12px
-}
-
-.timeline-likes .stats-right {
-    float: right
-}
-
-.timeline-likes .stats-total {
-    display: inline-block;
-    line-height: 20px
-}
-
-.timeline-likes .stats-icon {
-    float: left;
-    margin-right: 5px;
-    font-size: 9px
-}
-
-.timeline-likes .stats-icon+.stats-icon {
-    margin-left: -2px
-}
-
-.timeline-likes .stats-text {
-    line-height: 20px
-}
-
-.timeline-likes .stats-text+.stats-text {
-    margin-left: 15px
-}
-
 .timeline-comment-box {
     background: #f2f3f4;
     margin-left: -25px;
@@ -702,10 +695,15 @@ label{
 .input--file {
   position: relative;
   color: #7f7f7f;
-  top: 125px;
-  width: 10px;
-  left: 0px;
+  top: 90px;
+  width: 30px;
+  left: 4%;
   z-index: 9999;
+  background:#fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input--file input[type="file"] {
@@ -995,11 +993,34 @@ label{
 #status2{
     margin-top: 10px;
 }
+#logout-btn
+{
+    position: relative;
+    top: -130px !important;
+    margin-right: 1%;
 }
-
-
-
-
+}
+#logout-btn
+{
+    position: relative;
+    top: -50px;
+    margin-right: 1%;
+}
+#email
+{
+    position: relative;
+    top: -30px;
+}
+#view-profile
+{
+    position: relative;
+    top: -40px;
+}
+.status-btn
+{
+    position: relative;
+    top: -40px;
+}
 </style>
 
 
@@ -1053,26 +1074,26 @@ label{
                      <!-- END profile-header-img -->
                      <!-- BEGIN profile-header-info -->
                      <div class="profile-header-info">
-                        <h4 class="m-t-10 m-b-5">{{$teacher->name}}</h4>
-                        <p class="m-b-10">{{$teacher->email}}</p>
-                        {{-- <a href="#" class="btn btn-sm btn-info mb-2">Edit Profile</a> --}}
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <h4 class="m-t-0 m-b-3">{{$teacher->name}}</h4>
+                        <p class="m-b-4" id="email">{{$teacher->email}}</p>
+
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="view-profile">
                            View Profile
                           </button>
                           &nbsp; &nbsp; &nbsp; &nbsp;
                           @if($teacher->status == 'not approved')
 
-                          <button type="button" class="btn btn-danger" id="status2">
+                          <button type="button" class="btn btn-danger btn-sm status-btn" id="status2">
                             {{$teacher->status}}
                              </button>
 
                           @else
-                          <button type="button" class="btn btn-primary" id="status1">
+                          <button type="button" class="btn btn-primary btn-sm status-btn" id="status1">
                             {{$teacher->status}}
                           </button>
                           @endif
 
-                          <div class="row float-end">
+                          <div class="row float-end" id="logout-btn">
                             <a href="{{route('user-logout')}}" style="color:white;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
@@ -1147,7 +1168,7 @@ label{
                                  <span class="username"><a href="javascript:;">{{$student->student_id}}</a> <small></small></span>
                                  <span class="pull-right text-muted">{{$student->Board}}</span>
                               </div>
-                              <div class="timeline-content">
+                              <div class="timeline-content" style="overflow: hidden;">
                                  <p>
                                     <h6>{{$student->gender}}:Tutor Required</h6>
 
@@ -1167,7 +1188,7 @@ label{
                                  </p>
                               </div>
                               <div class="timeline-likes">
-                               <div class="btn btn-primary" id="notification" data-teacher_id={{session('user_id')}} data-subject={{$student->Subject}} data-student_id={{$student->student_id}}>get more detail</div>
+                               <div class="btn btn-primary btn-sm" id="notification" data-teacher_id={{session('user_id')}} data-subject={{$student->Subject}} data-student_id={{$student->student_id}}>get more detail</div>
 
 
                               </div>
@@ -1376,6 +1397,13 @@ label{
         </div>
       </div>
       <script>
+         const form = document.querySelector('#update-profile-form');
+const fileInput = document.querySelector('input[type="file"]');
+
+fileInput.addEventListener('change', () => {
+  form.submit();
+  $('#update-profile-form').submit();
+});
         $('#notification').on('click', function() {
     var teacherId = $(this).data('teacher_id');
     var subject = $(this).data('subject');
@@ -1431,12 +1459,7 @@ $('document').ready(function(){
             };
     $('#gender').val("{{$teacher->gender}}");
 
-    const form = document.querySelector('#update-profile-form');
-const fileInput = document.querySelector('input[type="file"]');
 
-fileInput.addEventListener('change', () => {
-  form.submit();
-});
 
             $('#update-teacher-form').submit(function (e) {
                 e.preventDefault();

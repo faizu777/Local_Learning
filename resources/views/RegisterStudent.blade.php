@@ -97,6 +97,22 @@
           line-height: normal;
           font-size: 12px;
         }
+        @media (max-width: 768px)
+        {
+            .rs-range {
+    margin-top: 29px;
+    width: 300px;
+    -webkit-appearance: none;
+}
+.box-minmax {
+    margin-top: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: aqua;
+}
+        }
 
         </style>
 <head>

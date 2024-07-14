@@ -47,14 +47,15 @@ Route::get('/admin',[admin::class,'Admin'])->name('admin')->middleware('auth');
 Route::get('/changestatus/{id}',[admin::class,'Change_Status'])->name('changestatus');
 Route::get('/teacherdetail/{id}',[admin::class,'teacherdetail'])->name('teacherdetail');
 Route::get('/pages',[admin::class,'pages'])->name('course');
-
+Route::get('/studentdetail/{id}',[admin::class,'studentdetail'])->name('studentdetail');
+Route::get('/notifications',[admin::class,'Notifications'])->name('notifications');
 
 
 
 Route::get('/Deleteteacher/{id}',[admin::class,'Delete_Teacher'])->name('deleteteacher');
 Route::get('/Deletepage/{id}',[admin::class,'Delete_page'])->name('deletepage');
 Route::get('/Login',[LoginuserController::class,'loginpage'])->name('loginpage');
-Route::get('/logout',[LoginuserController::class,'logout'])->name('user-logout');
+Route::get('/logout',[User_login::class,'logout'])->name('user-logout');
 Route::get('/Register',[LoginuserController::class,'RegisterPage'])->name('RegisterPage');
 Route::post('/UserLogin',[LoginuserController::class,'login'])->name('login');
 Route::post('/UserRegister',[LoginuserController::class,'Register'])->name('Register');

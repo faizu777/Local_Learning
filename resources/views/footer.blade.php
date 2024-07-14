@@ -33,22 +33,22 @@
                         <img class="img-fluid bg-light p-1" src="{{asset('img/course-2.jpg')}}" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{asset('img/course-3.jpg')}}" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{asset('extenalimges/img3.jpg')}}" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{asset('img/course-1.jpg')}}" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{asset('extenalimges/img4.jpg')}}" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{asset('img/course-2.jpg')}}" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{asset('extenalimges/img2.webp')}}" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{asset('img/course-3.jpg')}}" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{asset('extenalimges/img1.jpg')}}" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-3">Newsletter</h4>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <p>Stay connected! Join to our newsletter for the latest updates and offers.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text"
                         placeholder="Your email">
@@ -70,10 +70,10 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">
-                        <a href="">Home</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
+                        <a href="/">Home</a>
+                        <a href="/about">About</a>
+                        <a href="/contact">Help</a>
+                        <a href="/faq">FQAs</a>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,24 @@
     <!-- Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+<style>
+    .img-container {
+        position: relative;
+        max-width: 100%;
+    }
+    .img-container img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
 
+        transform: translateZ(0);
+        transition: transform 0.3s ease-out;
+    }
+    .img-container img:hover {
+        transform: translateY(-16px); /* Adjust the hover effect */
+    }
+</style>
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
@@ -73,7 +90,10 @@
     <div class="container">
       <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
         <div class="col-12 col-lg-6 col-xl-5">
-          <img class="img-fluid rounded" loading="lazy" src="{{asset('extenalimges/who-we-are.webp')}}" alt="About 1">
+          {{-- <img class="img-fluid rounded" loading="lazy" src="{{asset('extenalimges/who-we-are.webp')}}" alt="About 1" id="about1"> --}}
+          <div class="img-container">
+            <img class="img-fluid rounded" loading="lazy" src="{{asset('extenalimges/who-we-are.webp')}}" alt="About 1" id="about1">
+        </div>
         </div>
         <div class="col-12 col-lg-6 col-xl-7">
           <div class="row justify-content-xl-center">
@@ -217,8 +237,8 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
-                <h1 class="mb-5">Expert Instructors</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Team Members</h6>
+                <h1 class="mb-5">Our Team</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">

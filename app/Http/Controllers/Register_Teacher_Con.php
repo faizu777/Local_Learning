@@ -12,12 +12,14 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Student_Register;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\register;
 
 class Register_Teacher_Con extends Controller
 {
+
     public function RegisterTeacherData(Request $request)
     {
-
         $req = $request->validate([
             'name' => 'required',
             'Dob' => 'required',
@@ -35,10 +37,10 @@ class Register_Teacher_Con extends Controller
             'board' => 'required',
             'gender' => 'required',
             'password' => 'required',
-            'Adhaar_image' => 'required|image',
-            'Degree_image' => 'required|image',
+            'Adhaar_images.*' => 'required|image',
+            'Degree_images.*' => 'required|image',
             'email' => 'required|email|unique:teacher__register__datas',
-            'profile_pic' => 'required|image|max:3048|dimensions:max_width=474,max_height=474',
+            'profile_pic' => 'required|image|max:6048',
             'city' => 'required',
             'area' => 'required',
         ], [
@@ -73,57 +75,70 @@ class Register_Teacher_Con extends Controller
             'email.unique' => 'Email already exists.',
             'profile_pic.required' => 'Please upload your profile picture.',
             'profile_pic.image' => 'Please upload a valid image for profile picture.',
-            'profile_pic.max' => 'Profile picture must be less than 3MB.',
-            'profile_pic.dimensions' => 'Profile picture must be size image with in height 474 x width 474 pixels.',
+            'profile_pic.max' => 'Profile picture must be less than 6MB.',
+            'profile_pic.dimensions' => 'Profile picture must be size image with in height 500 x width 500 pixels.',
             'city.required' => 'Please enter your city.',
             'area.required' => 'Please enter your area.',
         ]);
 
-$Teacher= new Teacher_Register_Data();
-$Teacher->Teacher_id='Teacher'.rand(100000,999999);
-$Teacher->Name = $req['name'];
-$Teacher->Dob = $req['Dob'];
-$Teacher->city= $req['city'];
-$Teacher->area= $req['area'];
-$Teacher->phone_number = $req['Contact_number'];
-$Teacher->whatsapp_number = $req['WhatsApp_number'];
-$Teacher->adhaar_number = $req['Adhaar_number'];
-$Teacher->present_address = $req['presentaddress'];
-$Teacher->permanent_address = $req['permanentaddress'];
-$Teacher->tuition_name = $req['tuitionname'];
-$Teacher->teaching_experience = $req['teachingexp'];
-$Teacher->expected_monthly_tuition_fee = $req['fee'];
-$Teacher->qualification = $req['qualification'];
-$Teacher->major_subject = $req['major'];
-$Teacher->subject_can_teach = $req['subject'];
-$Teacher->board_name = $req['board'];
-$Teacher->gender = $req['gender'];
-$Teacher->password = $req['password'];
-$Teacher->status = 'not approved';
-$Teacher->email= $req['email'];
-if($req['Adhaar_image']!=NULL)
-{
-    $imageName ='teacher_adhaar_image'.time(). '.'.$req['Adhaar_image']->getClientOriginalExtension();
-$request->file('Adhaar_image')->move(public_path('Adhaar_images/'), $imageName);
+        $Teacher = new Teacher_Register_Data();
+        $Teacher->Teacher_id = 'Teacher' . rand(100000, 999999);
+        $Teacher->Name = $req['name'];
+        $Teacher->Dob = $req['Dob'];
+        $Teacher->city = $req['city'];
+        $Teacher->area = $req['area'];
+        $Teacher->phone_number = $req['Contact_number'];
+        $Teacher->whatsapp_number = $req['WhatsApp_number'];
+        $Teacher->adhaar_number = $req['Adhaar_number'];
+        $Teacher->present_address = $req['presentaddress'];
+        $Teacher->permanent_address = $req['permanentaddress'];
+        $Teacher->tuition_name = $req['tuitionname'];
+        $Teacher->teaching_experience = $req['teachingexp'];
+        $Teacher->expected_monthly_tuition_fee = $req['fee'];
+        $Teacher->qualification = $req['qualification'];
+        $Teacher->major_subject = $req['major'];
+        $Teacher->subject_can_teach = $req['subject'];
+        $Teacher->board_name = $req['board'];
+        $Teacher->gender = $req['gender'];
+        $Teacher->password = $req['password'];
+        $Teacher->status = 'not approved';
+        $Teacher->email = $req['email'];
 
-    $Teacher->Adhaar_image ='Adhaar_images/'.$imageName;
-}
-if($req['Degree_image']!=NULL)
-{
-    $imageName ='teacher_degree_image'.time(). '.'.$req['Degree_image']->getClientOriginalExtension();
-  $request->file('Degree_image')->move(public_path('Degree_images/'), $imageName);
-    $Teacher->Degree_image ='Degree_images/'.$imageName;
-}
-if($request->hasFile('profile_pic'))
-        {
-            $imageName =time(). '.'.$request->file('profile_pic')->extension();
-            $request->file('profile_pic')->move(public_path('Teacher_images/'), $imageName);
-            $Teacher->profile_img ='Teacher_images/'.$imageName;
-
+        if ($request->hasFile('Adhaar_images')) {
+            $adhaarImages = [];
+            foreach ($request->file('Adhaar_images') as $file) {
+                $imageName = 'teacher_adhaar_image' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('Adhaar_images/'), $imageName);
+                $adhaarImages[] = 'Adhaar_images/' . $imageName;
+            }
+            $Teacher->Adhaar_image = json_encode($adhaarImages); // Store as JSON array
         }
-$Teacher->save();
-return response()->json(['success' => 'Teacher Data Saved']);
-}
+
+        if ($request->hasFile('Degree_images')) {
+            $degreeImages = [];
+            foreach ($request->file('Degree_images') as $file) {
+                $imageName = 'teacher_degree_image' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('Degree_images/'), $imageName);
+                $degreeImages[] = 'Degree_images/' . $imageName;
+            }
+            $Teacher->Degree_image = json_encode($degreeImages); // Store as JSON array
+        }
+
+        if ($request->hasFile('profile_pic')) {
+            $imageName = time() . '.' . $request->file('profile_pic')->extension();
+            $request->file('profile_pic')->move(public_path('Teacher_images/'), $imageName);
+            $Teacher->profile_img = 'Teacher_images/' . $imageName;
+        }
+
+        $Teacher->save();
+        return response()->json(['success' => 'Teacher Data Saved']);
+    }
+
+
+
+
+
+
 public function update_teacher(Request $request)
 {
 return response()->json(['success' => $request->all()]);
@@ -189,9 +204,10 @@ return response()->json(['success' => $request->all()]);
 }
 public function update_profile(Request $request)
 {
-    if(session()->has('user'))
+
+    if(session()->has('user_id'))
     {
-        $Teacher = Teacher_Register_Data::where('Teacher_id', session()->get('user'))->first();
+        $Teacher = Teacher_Register_Data::where('Teacher_id', session()->get('user_id'))->first();
         if ($request->hasFile('img')) {
             $imageName = time() . '.' . $request->file('img')->getClientOriginalExtension();
             $request->file('img')->move(public_path('Teacher_images/'), $imageName);

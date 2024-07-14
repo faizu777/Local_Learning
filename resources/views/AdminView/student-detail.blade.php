@@ -287,11 +287,11 @@
                              <div class="card">
                                     <div class="card-body">
                                       <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="{{asset($teacher->profile_img)}}" alt="Admin" class="rounded-circle" width="150" height="150">
+                                        <img src="{{asset($student->profile_img)}}" alt="Admin" class="rounded-circle" width="150" height="150">
                                         <div class="mt-3">
-                                          <h4>{{$teacher->name}}</h4>
-                                          <p class="text-primary mb-1">{{$teacher->email}}</p>
-                                          <p class="text-muted font-size-sm">{{$teacher->permanent_address}}</p>
+                                          <h4>{{$student->Name}}</h4>
+                                          <p class="text-primary mb-1">{{$student->Contact_number}}</p>
+                                          <p class="text-muted font-size-sm">{{$student->address}}</p>
 
                                         </div>
                                       </div>
@@ -300,48 +300,17 @@
                                     <br>
 
                             </div>
-                            @php
-                            $adhaar_images = json_decode($teacher->Adhaar_image);
-                            @endphp
-                            @foreach($adhaar_images as $key => $adhaar)
                             <br>
                                     <br>
                             <div class="card">
-                                <div class="text text-center"> Adhaar Image</div>
-                                <div class="card-body">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <a href="{{ asset(''. str_replace('public/', '', $adhaar)) }}" target="_blank">
-                                            <img src="{{ asset(''. str_replace('public/', '', $adhaar)) }}" alt="Admin" width="250" height="250">
-                                        </a>
 
-
-                                    </div>
                                   </div>
-                                  </div>
-                                  @endforeach
                                   <br>
                                   <br>
-                                  @php
-                                  $degree_images = json_decode($teacher->Degree_image);
-                                  @endphp
-                                  
-                                  @foreach($degree_images as $key => $degree)
                           <div class="card">
-                              <div class="text text-center"> Degree Image</div>
-                              <div class="card-body">
-
-                                  <div class="d-flex flex-column align-items-center text-center">
-                                      <a href="{{ asset(''. str_replace('public/', '', $degree)) }}" target="_blank">
-                                          <img src="{{ asset(''. str_replace('public/', '', $degree)) }}" alt="Admin" width="250" height="250">
-                                      </a>
 
 
-                                  </div>
                                 </div>
-                            </div>
-                            <br>
-                                  <br>
-                            @endforeach
 
                                   <div class="card mt-3">
 
@@ -355,117 +324,34 @@
                                           <h6 class="mb-0">Full Name</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->name}}
+                                        {{$student->Name}}
                                         </div>
                                       </div>
                                       <hr>
                                       <div class="row">
                                         <div class="col-sm-3">
-                                          <h6 class="mb-0">Date of Birth</h6>
+                                          <h6 class="mb-0">Parent Name</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->Dob}}
+                                        {{$student->Parent_name}}
                                         </div>
                                       </div>
                                       <hr>
                                       <div class="row">
                                         <div class="col-sm-3">
-                                          <h6 class="mb-0">Phone Number</h6>
+                                          <h6 class="mb-0">Class</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->phone_number}}
+                                        {{$student->Class}}
                                         </div>
                                       </div>
                                       <hr>
                                       <div class="row">
                                         <div class="col-sm-3">
-                                          <h6 class="mb-0">WhatsApp Number</h6>
+                                          <h6 class="mb-0">Subject</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->whatsapp_number}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Adhaar Number</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->adhaar_number}}
-                                        </div>
-                                      </div>
-                                      <hr>
-
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Tuition Name</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                          {{$teacher->tuition_name}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Tutition Subject can teach</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->subject_can_teach}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Gender</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->gender}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Present Address</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->present_address}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Permanent Address</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->permanent_address}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Qualification</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->qualification}}
-                                        </div>
-                                      </div>
-
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Major Subject</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->major_subject}}
-                                        </div>
-                                      </div>
-                                      <hr>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                          <h6 class="mb-0">Full Name</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-primary">
-                                        {{$teacher->name}}
+                                        {{$student->Subject}}
                                         </div>
                                       </div>
                                       <hr>
@@ -474,19 +360,60 @@
                                           <h6 class="mb-0">Board</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->board_name}}
+                                        {{$student->Board}}
                                         </div>
                                       </div>
                                       <hr>
                                       <div class="row">
                                         <div class="col-sm-3">
-                                          <h6 class="mb-0">Excepted fee/month</h6>
+                                          <h6 class="mb-0">Gender</h6>
                                         </div>
                                         <div class="col-sm-9 text-primary">
-                                        {{$teacher->expected_monthly_tuition_fee}}
+                                        {{$student->gender}}
                                         </div>
                                       </div>
                                       <hr>
+
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                          <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary">
+                                        {{$student->address}}
+                                        </div>
+                                      </div>
+                                      <hr>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                          <h6 class="mb-0">Duration</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary">
+                                        {{$student->duration}}
+                                        </div>
+                                      </div>
+                                      <hr>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                          <h6 class="mb-0">Fee</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary">
+                                        {{$student->fee}}
+                                        </div>
+                                      </div>
+                                      <hr>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                          <h6 class="mb-0">Contact Number</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-primary">
+{{$student->Contact_number}}
+                                        </div>
+                                      </div>
+                                      <hr>
+
+
+
+
                                       <div class="row">
                                         <div class="col-sm-12">
 

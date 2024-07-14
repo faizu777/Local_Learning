@@ -7,11 +7,19 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('notifications') }}">
+                <i class="icon-bell outline-circle"></i>&nbsp;
+                <span class="menu-title ">Notifications
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('std_feedback') }}">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
                 <span class="menu-title">Add Student Feedback
             </a>
         </li>
+
         {{-- <li class="nav-item nav-category">UI Elements</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"

@@ -146,7 +146,24 @@
 
 
         }
+        #number
+        {
+            width: 220px !important;
+        }
+        ol, ul
+         {
+    padding-left: 5rem;
+}
     }
+
+    @media (max-width: 768px) {
+    .multi_step_form #msform fieldset .input-group .custom-file .custom-file-label {
+        width: 50%;
+        text-align: left;
+        height: 55px;
+        padding: 10px;
+    }
+}
 </style>
 <body>
     <!-- Spinner Start -->
@@ -249,7 +266,7 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6 " style="position: relative; left: 20%;">
-                                <input type="number" class="form-control" placeholder="+91 Contact Number" name="Contact_number" maxlength="10" oninput="validateInput(this)" style="border-radius: 10px;">
+                                <input type="number" class="form-control" placeholder="+91 Contact Number" name="Contact_number" maxlength="10" oninput="validateInput(this)" style="border-radius: 10px;" id="number">
                             </div>
                         </div>
                         <button type="button" class="action-button previous_button">Back</button>
@@ -262,7 +279,7 @@
                             <h4>Upload your ID card<br> Upload your Degree</h4>
                             <a href="#" class="don_icon"><i class="ion-android-done"></i></a>
                         </div>
-                        <div class="input-group">
+                        {{-- <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="upload" name="Adhaar_image"
                                     accept="image/*">
@@ -277,6 +294,18 @@
                                     accept="image/*">
                                 <label class="custom-file-label" for="upload2"><i
                                         class="ion-android-cloud-outline"></i> Degree Image</label>
+                            </div>
+                        </div> --}}
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="upload" name="Adhaar_images[]" accept="image/*" multiple>
+                                <label class="custom-file-label" for="upload"><i class="ion-android-cloud-outline"></i> Aadhaar Images</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="upload2" name="Degree_images[]" accept="image/*" multiple>
+                                <label class="custom-file-label" for="upload2"><i class="ion-android-cloud-outline"></i> Degree Images</label>
                             </div>
                         </div>
 
@@ -334,14 +363,14 @@
                         <div class="form-group">
 
                             <select name="city" class="form-select" style="color: black; border-radius: 10px;" id="city">
-                                <option selected >Select City</option>
+                                <option selected value="">Select City</option>
 
                             </select>
                         </div>
                         <div class="form-group">
 
                             <select name="area" class="form-select" style="color: black; border-radius: 10px;" id="area">
-                                <option selected >Select Area</option>
+                                <option selected value="">Select Area</option>
 
                             </select>
                         </div>

@@ -9,6 +9,7 @@ use App\Models\Student_Register;
 use App\Models\course;
 use App\Models\course_teacher_pivot;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Notification;
 class admin extends Controller
 {
     function courses()
@@ -19,8 +20,8 @@ class admin extends Controller
     }
     function Admin()
     {
-        $teachers = Teacher_Register_Data::all();
-        $students = Student_Register::all();
+        $teachers = Teacher_Register_Data::orderBy('id','desc')->get();
+        $students = Student_Register::orderBy('id','desc')->get();
         $No_student = Student_Register::count();
         $No_Teacher = Teacher_Register_Data::count();
 
@@ -174,6 +175,17 @@ class admin extends Controller
         $Teacher->save();
         return back()->with('changestatus', 'Status changed successfully');
     }
+function studentdetail($id)
+{
+    $student = Student_Register::where('student_id', $id)->first();
+    return view('AdminView.student-detail', compact('student'));
+}
+function Notifications()
+{
+    $notifications = Notification::orderBy('id','desc')->get();
+    return view('AdminView.notifications', compact('notifications'));
 
-   
+}
+
+
 }

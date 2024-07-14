@@ -75,7 +75,7 @@
       <div class="col-12 col-lg-6">
         <h2 class="h1 mb-3">How can we help you? Unlocking possibilities for your education FAQs answered. </h2>
         <p class="lead fs-4 text-secondary mb-4">We hope you have found an answer to your question. If you need any help, please search your query on our Support Center or contact us via email.</p>
-        <a href="#!" class="btn btn-lg bsb-btn-2xl btn-primary">All FAQ</a>
+        <a href="/contact" class="btn btn-lg bsb-btn-2xl btn-primary">All FAQ</a>
       </div>
       <div class="col-12 col-lg-6">
         <div class="row justify-content-xl-end">
@@ -97,12 +97,12 @@
                 </div>
               </div>
               <div class="accordion-item mb-4 shadow-sm">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="headingone">
+                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseone" aria-expanded="false" aria-controls="collapseone">
                     How Does Payment System Work?
                   </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                <div id="collapseone" class="accordion-collapse collapse" aria-labelledby="headingone">
                   <div class="accordion-body">
                     A payment system is a way to transfer money from one person or organization to another. It is a complex process that involves many different parties, including banks, credit card companies, and merchants.
                   </div>
@@ -121,12 +121,12 @@
                 </div>
               </div>
               <div class="accordion-item mb-4 shadow-sm">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="heading3">
+                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                     How do you charge for tutoring services?
                   </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3">
                   <div class="accordion-body">
                     We offer competitive hourly rates for our tutoring services, with discounts available for package deals and long-term commitments. We also offer a free initial consultation to discuss your tutoring needs and create a personalized learning plan.
                   </div>
@@ -136,12 +136,12 @@
 
 
               <div class="accordion-item mb-4 shadow-sm">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 class="accordion-header" id="heading4">
+                  <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                     What is your tutoring approach or methodology?
                   </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4">
                   <div class="accordion-body">
                     Our tutors use a student-centered approach, tailoring their teaching style to meet the individual needs and learning style of each student. We focus on building confidence, improving understanding, and developing critical thinking skills to help students achieve academic success.
                   </div>
