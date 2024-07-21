@@ -7,6 +7,7 @@ use App\Models\Teacher_Register_Data;
 use App\Models\Student_Register;
 use App\Models\city;
 use App\Models\area_in_city;
+use Illuminate\Support\Facades\Artisan;
 
 class page extends Controller
 {
@@ -32,6 +33,8 @@ class page extends Controller
     }
     function contact()
     {
+
+
         return view('contact');
 
     }
@@ -73,6 +76,14 @@ return view('Register-Teacher');
     public function terms_conditions()
     {
         return view('term-condition');
+    }
+    function forgot_password()
+    {
+        return view('user-forgot-pass');
+    }
+    function loader()
+    {
+        return view('loader-tester');
     }
 
 }

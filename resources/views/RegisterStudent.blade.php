@@ -124,7 +124,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    @include('favicon')
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,7 +190,7 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Find Your Tuitor Now </h1>
+                    <h1 class="display-3 text-white animated slideInDown">Find Your Tutor Now </h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
@@ -218,7 +218,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="#" alt="logo">
+                                <img src="{{asset('logo/logo1.png')}}" alt="logo">
                             </div>
 
 

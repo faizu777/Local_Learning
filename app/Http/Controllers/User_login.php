@@ -14,7 +14,7 @@ class User_login extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        $teacher = Teacher_Register_Data::where('email',$request->email)->first();
+        $teacher = Teacher_Register_Data::where('email',$request->email)->where('is_deleted',0)->first();
 if($teacher)
 {
     if($teacher->password==$request->password)

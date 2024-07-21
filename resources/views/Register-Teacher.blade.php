@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    @include('favicon')
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,9 +180,9 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="{{ route('index') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Local Learning</h2>
-        </a>
+        <a id="admin" href="{{ route('index') }}" class="navbar-brand d-flex align-items-center px-0 px-lg-0">
+            <img src="{{asset('logo/logo1.png')}}" alt="" width="150" height="75" class="d-inline-block align-top">
+         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -299,13 +299,13 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="upload" name="Adhaar_images[]" accept="image/*" multiple>
-                                <label class="custom-file-label" for="upload"><i class="ion-android-cloud-outline"></i> Aadhaar Images</label>
+                                <label class="custom-file-label" for="upload"><i class="ion-android-cloud-outline"></i> Aadhaar Image</label>
                             </div>
                         </div>
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="upload2" name="Degree_images[]" accept="image/*" multiple>
-                                <label class="custom-file-label" for="upload2"><i class="ion-android-cloud-outline"></i> Degree Images</label>
+                                <label class="custom-file-label" for="upload2"><i class="ion-android-cloud-outline"></i> Degree Image</label>
                             </div>
                         </div>
 
@@ -336,7 +336,7 @@
                             <input type="file" class="form-control  bg-primary"
 
 
-                            name="profile_pic" id="profile_pic" style="border-radius: 10px;">
+                            name="profile_pic" id="profile_pic" style="border-radius: 10px;" title="Upload your Recent profile picture">
 
 
                         </div>
@@ -510,64 +510,67 @@
         }
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-center",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "1000",
-                "hideDuration": "2000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "show",
-                "hideMethod": "hide"
-            };
+<script type="text/javascript">
+    $(document).ready(function() {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "2000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "show",
+            "hideMethod": "hide"
+        };
 
-            var form = document.getElementById("msform");
+        var form = document.getElementById("msform");
 
-            form.addEventListener("submit", function(event) {
-                event.preventDefault();
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
 
-                var formdata = new FormData(form);
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('RegisterTeacherData') }}",
-                    data: formdata,
-                    contentType: false,
-                    processData: false,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
+            var formdata = new FormData(form);
 
-                        toastr.success('Registration Successful Please Wait for approval');
-                        setTimeout(function() {
-                            window.location.href = '/';
-                        }, 2000);
-                    },
-                    error: function(error) {
-                        var Showerror = document.getElementById("error-message");
-                        Showerror.style.display = "block";
-                        Showerror.innerHTML = '';
-                        var errors = error.responseJSON.errors;
-                        $.each(errors, (key, value) => {
-                            Showerror.innerHTML += value + '<br>';
-                        });
-                        toastr.error('Something Went Wrong !');
-                    }
-                });
+            toastr.info('Sending request, please wait...');
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('RegisterTeacherData') }}",
+                data: formdata,
+                contentType: false,
+                processData: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                    toastr.clear(); // Clear the sending request notification
+                    toastr.success('Registration Successful. Please wait for approval.');
+                    setTimeout(function() {
+                        window.location.href = '/';
+                    }, 2000);
+                },
+                error: function(error) {
+                    toastr.clear(); // Clear the sending request notification
+                    var Showerror = document.getElementById("error-message");
+                    Showerror.style.display = "block";
+                    Showerror.innerHTML = '';
+                    var errors = error.responseJSON.errors;
+                    $.each(errors, (key, value) => {
+                        Showerror.innerHTML += value + '<br>';
+                    });
+                    toastr.error('Something went wrong!');
+                }
             });
         });
+    });
+</script>
 
-
-    </script>
 
     <script type="text/javascript">
     </script>

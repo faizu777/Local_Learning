@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a id="admin" href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Local Learning</h2>
+    <a id="admin" href="#" class="navbar-brand d-flex align-items-center px-0 px-lg-0">
+       <img src="{{asset('logo/logo1.png')}}" alt="" width="250" height="120" class="d-inline-block align-top">
     </a>
+
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>

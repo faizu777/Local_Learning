@@ -131,6 +131,18 @@ class Register_Teacher_Con extends Controller
         }
 
         $Teacher->save();
+        $msg = "Dear" . $request->name . ",
+
+Congratulations! Your registration with Tutor Wallah is now complete.
+
+You can log in to your account using the email and password you provided during registration.
+
+If you have any questions, please contact us .
+
+Welcome aboard!
+
+Best regards ,GOOD TO GO";
+        Mail::to($request->email)->send(new register($msg));
         return response()->json(['success' => 'Teacher Data Saved']);
     }
 
@@ -257,6 +269,66 @@ function notification(Request $request)
     }
     return response()->json(['error' => 'Invalid Request'],400);
 }
+function sendotp(Request $request)
+{
+    $teacher = Teacher_Register_Data::where('email',$request->email)->first();
+    if($teacher)
+    {
+        $otp = rand(0000,9999);
+        $teacher->otp=$otp;
+        $teacher->save();
+        $msg = "Your OTP is " . $otp;
+        Mail::to($request->email)->send(new register($msg));
+        $request->session()->put('teacher_email', $request->email);
+        return response()->json(['success' => 'OTP Sent Successfully to your Email'],200);
+    }
+   return response()->json(['error' => 'Invalid Credentials'],400);
+}
+function get_otp()
+{
+    return view('fill-otp');
+}
+function verify_otp(Request $request)
+{
+    $request->validate([
+        'digit1' => 'required',
+        'digit2' => 'required',
+        'digit3' => 'required',
+        'digit4' => 'required',
+    ]);
+    $otp= $request->digit1 . $request->digit2 . $request->digit3 . $request->digit4;
+    $teacher = Teacher_Register_Data::where('otp',$otp)->first();
+    if($teacher)
+    {
+        return response()->json(['success' => 'OTP Verified'],200);
+
+    }
+    return response()->json(['error' => 'OTP Verification Failed'],400);
 
 
+}
+function get_set_password()
+{
+
+    return view('set-new-password');
+}
+function set_password(Request $request)
+{
+    $request->validate([
+        'new_password' => 'required',
+        'confirm_password' => 'required',
+    ]);
+    if($request->new_password != $request->confirm_password)
+    {
+        return response()->json(['error' => 'New password and confirm password do not match'],400);
+    }
+    $teacher = Teacher_Register_Data::where('email',$request->session()->get('teacher_email'))->first();
+    if($teacher)
+    {
+        $teacher->password = $request->new_password;
+        $teacher->save();
+        return response()->json(['success' => 'Password set successfully'],200);
+    }
+    return response()->json(['error' => 'Invalid Credentials'],400);
+}
 }

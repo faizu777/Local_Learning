@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Local Learning </title>
+    <title>Tutors Wallah </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="/img/favicon.ico" rel="icon">
 
+   @include('favicon')
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,22 @@
     <!--  Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+<style>
+    .fixed-card {
+        height: 350px; /* Adjust the height as needed */
+    }
 
+    .fixed-image-container {
+        height: 240px; /* Adjust the height as needed */
+        overflow: hidden;
+    }
+
+    .fixed-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
@@ -53,7 +68,7 @@
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{{asset('AI_IMAGES/img2.jpg')}}" alt="">
+                <img class="img-fluid" src="{{asset('AI_IMAGES/img2.jpg')}}" alt="loading..." lazyload title="Find Your Desire Destination with us">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -61,7 +76,7 @@
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Classes</h5>
                                 <h1 class="display-3 text-white animated slideInDown">The Best Learning Platform</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Learning flourishes under the guidance of a coach
+                                <p class="fs-5 text-white mb-4 pb-2"><span class="text text-primary">Tutors Wallah</span> under the guidance of a coach
                                     who inspires, challenges, and empowers, creating a path illuminated by knowledge and
                                     growth.</p>
                                 <a href="{{ route('RegisterTeacher') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Find
@@ -75,7 +90,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{{asset('AI_IMAGES/img1.jpg')}}" alt="">
+                <img class="img-fluid" src="{{asset('AI_IMAGES/img1.jpg')}}" alt="Loading..." lazyload title="What you want here">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -155,16 +170,27 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
                         <img class="img-fluid position-absolute w-100 h-100" src="{{asset('extenalimges/childs.png')}}" alt=""
-                            style="object-fit: cover;">
+                         title="Find Your Desire Destination with us"   style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">Know More</h6>
-                    <h1 class="mb-4">Welcome to Local Learning</h1>
+                    <h1 class="mb-4">Welcome to <span class="text text-primary">Tutors Wallah</span> </h1>
                     <p class="mb-4">Welcome to ! Step into a world of knowledge, innovation, and growth. </p>
                     <p class="mb-4"> Let's embark on a journey of learning together.</p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Tutoring Anytime, Anywhere
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Best Classes</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Safe, Secure,Affordable
+                               </p>
+                        </div>
+                        <div class="col-sm-6">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors
                             </p>
                         </div>
@@ -172,19 +198,8 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International
-                                Certificate</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International
-                                Certificate</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Expert Tutors
+                                </p>
                         </div>
                     </div>
                     <a class="btn btn-primary py-3 px-5 mt-2" href="/about">Read More</a>
@@ -372,133 +387,76 @@
 
     <!-- Team Start -->
 @if(count($instructors)>0)
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
-                <h1 class="mb-5">Latest Instructors & Tutors</h1>
-            </div>
-            <div class="row g-4">
-
-               @foreach($instructors as $instructor)
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-
-                            <img class="img-fluid" src="{{asset($instructor->profile_img)}}" alt="">
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
+            <h1 class="mb-5">Latest Instructors & Tutors</h1>
+        </div>
+        <div class="row g-4">
+            @foreach($instructors as $instructor)
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item bg-light fixed-card">
+                        <div class="overflow-hidden fixed-image-container">
+                            <img class="img-fluid fixed-image" src="{{ asset($instructor->profile_img) }}" alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <h5 class="mb-0">{{$instructor->name}}</h5>
+                            <h5 class="mb-0">{{ $instructor->name }}</h5>
                             @php
-                                $city = DB::table('cities')->where('city_id',$instructor->city)->first();
+                                $city = DB::table('cities')->where('city_id', $instructor->city)->first();
                             @endphp
                             @if($city)
-                            <small>{{$city->city_name}}</small>
+                                <small>{{ $city->city_name }}</small>
                             @endif
                         </div>
                     </div>
                 </div>
-                @endforeach
-                {{-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div> --}}
-            </div>
+            @endforeach
         </div>
     </div>
+</div>
+
+
+
 @endif
     <!-- Team End -->
-
-
+    @php
+    $students = DB::table('student__registers')->orderBy('id','desc')->limit(4)->get();
+@endphp
+@if(count($students)>0)
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" >
         <div class="container">
             <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Students Say!</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Latest Queries</h6>
+                <h1 class="mb-5">Students Find You!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel position-relative" >
-                @php
-                    $feedbacks = DB::table('student_feedbacks')->get();
-                @endphp
-                @foreach($feedbacks as $feedback)
+
+                @foreach($students as $student)
                 <div class="testimonial-item text-center">
 
                     <img class="border rounded-circle p-2 mx-auto mb-3" src="{{asset('extenalimges/student.png')}}"
                         style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">{{$feedback->name}}</h5>
-                    <p>{{$feedback->student_profession}}</p>
+                    <h5 class="mb-0">{{ str_replace(substr($student->Name, 5), str_repeat('*', strlen(substr($student->Name, 3))), $student->Name) }}</h5>
+
                     <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">{{$feedback->feedback}}</p>
+                        <p class="mb-0">Address:{{ str_replace(substr($student->address, 5), str_repeat('*', strlen(substr($student->address, 5))), $student->address) }}
+<br>
+                         Class:   {{$student->Class}}
+<br>
+                           Subject: {{$student->Subject}}
+<br>
+
+<a href="{{ route('RegisterTeacher') }}" class="btn btn-sm btn-light text-primary" style="color:#04AEC4 !important;">Let's Connect &nbsp;<i class="fa fa-phone primary"></i></a>
+                        </p>
 
                     </div>
                 </div>
@@ -509,7 +467,7 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
+@endif
 
     <!-- Footer Start -->
     @include('footer')

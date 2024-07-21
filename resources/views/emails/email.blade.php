@@ -1,5 +1,5 @@
 <x-mail::message>
-# Introduction
+# Contact Us
 
 Hii There '
 <br>
@@ -8,7 +8,7 @@ You Have a new message from {{ $name }} on {{ $subject }}
 
 
 Thanks,<br>
-<h1>Local Learning</h1>
+
 <br>
 name={{ $name }}
 <br>
@@ -18,6 +18,6 @@ subject={{ $subject }}
 <br>
 message
 <br>
-{{ $message }}
+<h1>{{ $message }}</h1>
 
 </x-mail::message>

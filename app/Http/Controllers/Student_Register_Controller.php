@@ -49,7 +49,7 @@ class Student_Register_Controller extends Controller
         }
         $stdData->save();
 
-        return response()->json(['success' => 'Your are successfully registered Wait for approval']);
+        return response()->json(['success' => 'Thanks We are Searching for your Tutors']);
     }
     function get_StudentData()
     {

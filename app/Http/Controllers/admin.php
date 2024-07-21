@@ -20,18 +20,24 @@ class admin extends Controller
     }
     function Admin()
     {
-        $teachers = Teacher_Register_Data::orderBy('id','desc')->get();
-        $students = Student_Register::orderBy('id','desc')->get();
-        $No_student = Student_Register::count();
-        $No_Teacher = Teacher_Register_Data::count();
+        $teachers = Teacher_Register_Data::orderBy('id','desc')->where('is_deleted',0)->get();
+        $students = Student_Register::orderBy('id','desc')->where('is_deleted',0)->get();
+        $No_student = Student_Register::where('is_deleted',0)->count();
+        $No_Teacher = Teacher_Register_Data::where('is_deleted',0)->count();
 
         $meassage = 'ok';
         return view('AdminView.adminview', compact('meassage', 'teachers', 'students', 'No_student', 'No_Teacher'));
     }
     function Delete_Teacher($id)
     {
-        $Teacher = Teacher_Register_Data::where('Teacher_id',$id)->delete();
-        return back()->with('deleteteacher', 'Teacher deleted successfully');
+        $Teacher = Teacher_Register_Data::where('Teacher_id',$id)->first();
+        $image_path = $Teacher->profile_img;
+
+
+    $Teacher->is_deleted= 1;
+    return back()->with('deleteteacher', 'Teacher deleted successfully');
+
+
     }
     function Delete_Course($id)
     {
@@ -160,7 +166,7 @@ class admin extends Controller
     }
     public function teacherdetail($id)
     {
-        $teacher = Teacher_Register_Data::where('Teacher_id', $id)->first();
+        $teacher = Teacher_Register_Data::where('Teacher_id', $id)->where('is_deleted',0)->first();
         return view('AdminView.teacherdetail', compact('teacher'));
 
     }

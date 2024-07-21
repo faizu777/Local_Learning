@@ -25,6 +25,10 @@ Route::get('/clear-cache', function () {
 
     return 'Cache cleared!';
 });
+Route::get('queue', function () {
+    Artisan::call('queue:listen');
+    return 'Queue runing!';
+});
 Route::get('/privacy',[page::class,'privacy'])->name('privacy');
 Route::get('/', [page::class, 'index'])->name('index');
 Route::get('/about',[page::class,'about']);
@@ -39,7 +43,8 @@ Route::get('/privacy-policy',[page::class,'privacy_policy'])->name('privacy-poli
 Route::get('/terms-and-conditions',[page::class,'terms_conditions'])->name('terms-and-conditions');
 Route::get('/city',[page::class,'get_city'])->name('city');
 Route::get('/area/{city_id}',[page::class,'get_area'])->name('area');
-
+Route::get('/forgot-password',[page::class,'forgot_password'])->name('forgot-password');
+// Route::get('/loader',[page::class,'loader'])->name('loader');
 
 
 Route::post('/Addpage',[admin::class,'Add_page']);
@@ -68,6 +73,14 @@ Route::post('/update_teacher',[Register_Teacher_Con::class,'update_teacher'])->n
 Route::post('/update-profile',[Register_Teacher_Con::class,'update_profile'])->name('update-profile');
 Route::get('/teacher/{id}',[Register_Teacher_Con::class,'Teacher_Detail'])->name('Teacher_Detail');
 Route::get('/notification',[Register_Teacher_Con::class,'notification'])->name('notification');
+Route::post('/sendotp',[Register_Teacher_Con::class,'sendotp'])->name('sendotp');
+Route::get('/get-otp',[Register_Teacher_Con::class,'get_otp'])->name('get-otp');
+Route::post('/verifyotp',[Register_Teacher_Con::class,'verify_otp'])->name('verifyotp');
+Route::get('/get-set-password',[Register_Teacher_Con::class,'get_set_password'])->name('get-set-password');
+Route::post('/setpassword',[Register_Teacher_Con::class,'set_password'])->name('setpassword');
+
+
+
 
 
 Route::post('login-user',[User_login::class,'login_user'])->name('login-user');

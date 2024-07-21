@@ -8,7 +8,7 @@
         </div>
         <div>
             <a class="navbar-brand brand-logo" href="">
-               <a href="/" class="text text-primary">Navbar</a>
+               <a href="/" class="text text-primary"><img src="{{asset('logo/logo1.png')}}" alt="logo" width="100" height="50"></a>
             </a>
             <a class="navbar-brand brand-logo-mini" href="">
                 <img src="/src//assets/images/logo-mini.svg" alt="logo" />

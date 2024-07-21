@@ -3,14 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING </title>
+    <title>Faq </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content=" Learning Platform " name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="/img/favicon.ico" rel="icon">
-
+   @include('favicon')
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

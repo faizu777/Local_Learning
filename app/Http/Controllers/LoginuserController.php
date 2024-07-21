@@ -23,14 +23,14 @@ class LoginuserController extends Controller
         ]);
         $User = loginuser::where('email', $Logindetails['email'])->first();
         if ($User == null) {
-            return back()->with('error', 'Invalid Email or Password');
+            return back()->with('error', 'Invalid Email or Password')->withInput();
         } else {
             if ($User->password == $Logindetails['password']) {
                 session()->put('admin', $User->admin_id);
 
                 return redirect('/admin');
             } else {
-                return back()->with('error', 'Invalid Email or Password');
+                return back()->with('error', 'Invalid Email or Password')->withInput();
             }
         }
     }

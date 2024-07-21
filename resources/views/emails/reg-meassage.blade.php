@@ -1,3 +1,3 @@
 <x-mail::message>
-{{$message}}
+   {{$message}}
 </x-mail::message>
